@@ -1,0 +1,138 @@
+{% if product.handle == 'side-sleeper-pro' %}
+<style>
+  .custom-selectbox {
+    position: relative;
+  }
+  .custom-selectbox .selection {
+    width: 100%;
+    border: 3px solid #e1e1f5;
+    border-radius: 6px;
+    padding: 20px 25px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    position: relative;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .custom-selectbox .selection .mainot {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  .custom-selectbox .selection .mainot .img {
+    width: 15%;
+  }
+  .custom-selectbox .selection .mainot .titit {
+    width: 70%;
+  }
+
+  .pillowcase_upsell {
+
+    display: none;
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    top: 100%;
+    padding: 13px;
+    border-radius: 5px;
+    list-style: none;
+    max-height: 200px;
+    overflow: auto;
+
+    z-index: 999999;
+  }
+  .pillowcase_upsell li {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .add-on-option-pillowcase label {
+    padding-bottom: 10px;
+    display: block;
+    cursor: pointer;
+    color: #39006f;
+    text-transform: inherit;
+    font-weight: 500;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+  }
+  .pillowcase_upsell li img {
+    max-width: 60px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  .pillowcase_upsell [type="radio"] {
+    display: none;
+  }
+</style>
+
+<div class="add-on-option-pillowcase">
+  {% assign upsellcoll = collections['pillowcases'] %}
+  <label>ADD A PILLOW CASE. <!--GET <u>FREE SHIPPING</u>--></label>
+
+  <div class="custom-selectbox">
+    <div class="selection">
+      <div class="mainot">
+
+        {% for prodP in upsellcoll.products %}
+        {% for variant in prodP.variants %}
+        {% if variant.id == 37116399517854 %}
+        <span class="img" style="display:block"><img data-swift-lazy="1" loading="lazy" src="{{ prodP.images[0] | img_url : '100x' }}"></span><span class="titit">{{ prodP.title }} - {{ variant.price | money }}</span>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        <span><span class="arrow-down"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046"></span></span></div>
+    </div>
+    <ul class="pillowcase_upsell" >
+      {% for prodP in upsellcoll.products %}
+      {% for variant in prodP.variants %}
+      {% if variant.available and variant.title contains '12x24' %}
+      {% unless variant.id == 40356285644958 or variant.id == 40356285710494 %}
+      <li data-variant="{{ variant.id }}" data-title="{{ variant.title }}" > 
+        <label for="pillocase_upsell_{{ variant.id }}">
+          <input {% if variant.id == 37116399517854 %}checked{% endif %} id="pillocase_upsell_{{ variant.id }}" type="radio" name="pillowcase_option" value="{{ variant.id }}">
+          <img data-swift-lazy="1" loading="lazy" src="{{ prodP.images[0] | img_url : '100x' }}"> 
+          <span class="pro-title">{{ prodP.title }} - {{ variant.price | money }}</span>
+        </label>
+      </li>
+      {% endunless %}
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+      <li value="none none-variant">
+        <label for="pillocase_upsell__none_variant">
+          <input id="pillocase_upsell__none_variant" type="radio" name="pillowcase_option" value="none">
+          No Pillowcase
+        </label>
+      </li>
+    </ul>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+
+    $(document).on('click','.custom-selectbox .selection',function(){
+      var parent = $(this).closest('.custom-selectbox');
+      $(parent).find('.pillowcase_upsell').slideToggle()
+    })
+
+    $(document).on('change','[name="pillowcase_option"]',function(){
+      var value = $(this).val(),
+          parent = $(this).closest('label'),
+          gp = $(this).closest('.custom-selectbox'),
+          img = $(parent).find('img').attr('src'),
+          prodtitle = $(parent).find('.pro-title').text();
+      if(value != 'none'){
+        $(gp).find('.mainot .img').html('<img data-swift-lazy="1" loading="lazy" src="'+img+'">').show();
+        $(gp).find('.mainot .titit').html(prodtitle);
+      }else{
+        $(gp).find('.mainot .img').html('').hide();
+        $(gp).find('.mainot .titit').html('No Pillowcase');
+      }
+      $(gp).find('.pillowcase_upsell').slideToggle();
+    });
+  });
+</script>
+{% endif %}

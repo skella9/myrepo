@@ -1,0 +1,253 @@
+{% assign related_pro = product.metafields.my_fields.related_product_handles %}
+{% assign related_using_collection = false %}
+{% if related_pro != blank %}
+{% assign proarr = related_pro | split : '_' %}
+
+{% assign related_using_collection = true %}
+
+<section class="rltdProd with-collection" {% if hide_bought_together %}style="display: none"{% endif %}>
+  <div class="container">
+    <div class="sTitleBox txtCenter">
+      <h4 class="prodSecTitle">COMMONLY BOUGHT TOGETHER</h4>
+    </div>
+    <div class="rltdProdBox">
+      {% for handle in proarr %}
+      {% assign rproduct = all_products[handle] %}
+      {% if rproduct.handle != product.handle %}
+      <div class="rlPrCard">
+        <div class=""><img data-swift-lazy="1" loading="lazy" src="{{ rproduct.featured_image | img_url : '250x' }}" alt="" /></div>
+        <div class="flexBox flexColumn flexJcb">
+          <div class="rlPrCardTxt">
+            {% if rproduct.metafields.my_fields.related_product_title != blank %}
+            <h5>{{ rproduct.metafields.my_fields.related_product_title }}</h5>
+            {% else %}
+            <h5>{{rproduct.title}}</h5>
+            {% endif %}
+            {% if rproduct.metafields.my_fields.related_product_description != blank %}
+            <div class="">
+              {{ rproduct.metafields.my_fields.related_product_description }}
+            </div>
+            {% endif %}
+          </div>
+          <a href="{{ rproduct.url }}" class="btnShop">SHOP NOW</a>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+
+
+
+    </div>
+  </div>
+</section>
+
+{% endif %}
+
+{% unless related_using_collection %}
+<!-- Related Product -->
+{% if product.handle != 'pillow-cubs' %}
+<section class="rltdProd">
+  <div class="container">
+    <div class="sTitleBox txtCenter">
+      <h4 class="prodSecTitle">COMMONLY BOUGHT TOGETHER</h4>
+    </div>
+    <div class="rltdProdBox">
+
+      {% if product.handle == 'cube' %}
+      <div class="rlPrCard">
+        <div class=""><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/propro.jpg?v=1618509925" alt="" /></div>
+        <div class="flexBox flexColumn flexJcb">
+          <div class="rlPrCardTxt">
+            <h5>Side Sleeper PRO</h5>
+            <p>• People who roll from side to side during the night</p>
+            <p>• People who want a pillow that covers their bed better/shaped more like a traditional pillow</p>
+            <p>• People who want to use it for a body pillow</p>
+          </div>
+          <a href="/products/side-sleeper-pro" class="btnShop">SHOP NOW</a>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if product.handle == 'pillow-cube-pro' or product.handle == 'side-sleeper-pro' %}
+      <div class="rlPrCard">
+        <div class=""><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/classic.jpg?v=1618509830" alt="" /></div>
+        <div class="flexBox flexColumn flexJcb">
+          <div class="rlPrCardTxt">
+            <h5>Pillow Cube Classic</h5>
+            <p>• Napping on an airplane</p>
+            <p>• Family road trips</p>
+            <p>• Napping on the couch</p>
+            <p>• CPAP machine users</p>
+            <p>• People who don't like rolling but prefer to sleep on one side the whole night.</p>
+          </div>
+          <a href="/products/cube" class="btnShop">SHOP NOW</a>
+        </div>
+      </div>
+      {% endif %}
+
+      {% assign cubs_coll = false %}
+      {% for coll in product.collections %}
+      {% if coll.handle == 'pillow-cubs' %}
+      {% assign cubs_coll = collections['pillow-cubs'] %}
+      {% endif %}
+      {% endfor %}
+
+      {% if cubs_coll %}
+      {% for rproduct in cubs_coll.products %}
+      {% if rproduct.handle != product.handle %}
+      <div class="rlPrCard {% if cubs_coll.products_count > 3 %}colgd4{% endif %}">
+        <div class=""><img data-swift-lazy="1" loading="lazy" src="{{ rproduct.featured_image | img_url : '250x' }}" alt="" /></div>
+        <div class="flexBox flexColumn flexJcb">
+          <div class="rlPrCardTxt">
+            <h5>{{rproduct.title}}</h5>
+            {% comment %}
+            <p>• Super soft</p>
+            <p>• Super Stretchy</p>
+            <p>• Custom fit for your comfort</p>
+            <p>AVAILABLE IN SNOWY WHITE or in new colors and patterns.</p>
+            {% endcomment %}
+          </div>
+          <a href="{{ rproduct.url }}" class="btnShop">SHOP NOW</a>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+
+      <div class="rlPrCard">
+        <div class=""><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pillow_cases_header_image.jpg?v=1640041722" alt="" /></div>
+        <div class="flexBox flexColumn flexJcb">
+          <div class="rlPrCardTxt">
+            <h5>Pillowcases</h5>
+            <p>• Super soft</p>
+            <p>• Super Stretchy</p>
+            <p>• Custom fit for your comfort</p>
+            <p>AVAILABLE IN SNOWY WHITE or in new colors and patterns.</p>
+          </div>
+          <a href="/collections/pillowcases" class="btnShop">SHOP NOW</a>
+        </div>
+      </div>
+      {% endif %}
+
+
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endunless %}
+
+<!-- Product Info -->
+
+<section class="prodInfo">
+  <div class="container">
+    {% if product.handle == 'pillow-cube-pro' or product.handle == 'side-sleeper-pro' %}
+    <div class="pro-bottom-section">
+      <div class="col1">
+        <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Pro3-min_1920x_rounded.png?v=1637042886">
+      </div>
+      <div class="col2">
+        <p>Pillows aren't created equal. There are many styles available online and before starting this looooong project we tested them all.</p>
+        <p>We then got started on finding the perfect foam formulation.</p>
+        <p>We thought this would be easy.</p>
+        <p>After testing nearly 1,000 different combinations (no exaggeration) we nearly gave up. And then, in the end, stumbled on ‘the one.’</p>
+        <p>Turns out, it’s the memory foam core that makes all the difference. Three things stand out:</p>
+        <ul class="mbt-list">
+          <li>
+            The core is built with special temperature regulating material. This keeps things cool.</li>
+          <li>The memory foam has to be perfectly balanced, not too firm or soft. This may seem like a simple “split the difference” situation, but it isn't. Precise calculations are needed to get the density just right. Off by even a little and it’ll affect overall sleep quality.</li>
+          <li>Will last you years. It’s relatively easy to find some cheap memory foam that performs well for the first 30 nights. It’s an entirely different matter to engineer something that will hold its shape for years.
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+    <div class="prodInfoBox">
+      <div class="prodDesc">
+        {% unless product.handle == 'pillow-cube-pro' or product.handle == 'side-sleeper-pro' %}
+        <h4 class="prodSecTitle">Description</h4>
+        {% endunless %}
+        <div class="">
+
+          {% if product.type == 'Pillow'%}
+          {% unless product.handle == 'pillow-cube-pro' or product.handle == 'side-sleeper-pro' %}
+          <div class="productDescription">
+            {{ product.description }}
+          </div>
+          {% endunless %}
+          <h5>Need help choosing the right size for you?</h5>
+          <div class="prodDescVid">
+            <div class="videoBox">
+              <div class="videoLink">
+
+                <div class="youtube-video-place embed-responsive embed-responsive-4by3 " data-yt-url="https://www.youtube.com/embed/MF4c6nq_VEM?rel=0&showinfo=0&autoplay=1&enablejsapi=1">
+                  <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pillow-pre.png?v=1626164786" async class="play-youtube-video">
+                </div>
+
+                {% comment %}
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/MF4c6nq_VEM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% endcomment %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if product.type == 'Pillow Cubs'%}
+          <div class="productDescription">
+            {{ product.description }}
+          </div>
+          <div class="prodDescVid">
+            <div class="videoBox">
+              <div class="videoLink">
+
+                <div class="youtube-video-place embed-responsive embed-responsive-4by3 " data-yt-url="https://www.youtube.com/embed/cYj-oTTjD-0?rel=0&showinfo=0&autoplay=1&enablejsapi=1">
+                  <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pre-2.png?v=1626164971" async class="play-youtube-video">
+                </div>
+                {% comment %}
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/cYj-oTTjD-0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% endcomment %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if product.type == 'Pillowcase'%}
+          <div class="productDescription">
+            {{ product.description }}
+          </div>
+          {% endif %}
+
+
+          {% if product.handle == 'pillow-cubs'%}
+          <div class="productDescription">
+            {{ product.description }}
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="prodRev">
+        <!--Stamped - Begin Main Widget -->
+        <div class="prodRevInner newrev">
+          <div 
+          id="stamped-main-widget"   
+          data-product-id="{{ product.id }}"   
+          data-name="{{ product.title | escape }}"   
+          data-url="{{ shop.url }}{{ product.url }}"   
+          data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" 
+          data-description="{{ product.description | escape }}"   
+          data-product-sku="{{product.handle}}"
+          data-product-title="{{product.title}}" 
+          data-product-type="{{product.type}}">   
+          {{product.metafields.stamped.reviews}}   
+          </div>
+        </div>
+        <!-- Stamped - End Main Widget -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+</section>

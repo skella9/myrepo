@@ -1,0 +1,217 @@
+{% if product.handle == 'side-sleeper-pro' %}
+
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
+{% assign opt2 = selected_variant.option2 %}
+{% assign price = selected_variant.price %}
+{% assign selected_var = product.selected_or_first_available_variant %}
+{% for option in product.options_with_values %}
+
+{% assign optname = 'option' | append : option.position %}
+
+{% assign optionname = option.name | downcase %}
+
+{% if optionname == 'thickness' %}
+
+<div class="prodThick se-swatch">
+  <p class="labelf">Select Pillow Size</p>
+  <div class="radios main-form-radios with-swatches">
+    {% for value in option.values %}
+    <div>
+      <label data-title="{{ value }}" class="{% if value contains '4 Inch' %}
+                                             thin
+                                             {% endif %}
+                                             {% if value contains '5 Inch' %}
+                                             standard
+                                             {% endif %}
+                                             {% if value contains '6 Inch' %}
+                                             thick
+                                             {% endif %}
+                                             {% if selected_var[optname] == value %}
+                                             selected 
+                                             {% endif %}" >
+        <span class="label pos-abs">Fits Most people</span>
+        <div class="left-bc">
+          <input class="main_variant" {% if selected_var[optname] == value %} checked {% endif %} type="radio" name="{{optname}}" value="{{ value }}">
+          <span data-checkbox><p class="selector"></p></span>  
+          <div class="variant-title">
+            {% if value contains '4 Inch' %}
+            <p >
+              <strong>THIN</strong>
+              <span class="price-m"></span>
+            </p>
+            {% endif %}
+            {% if value contains '5 Inch' %}
+            <p >
+              <strong>STANDARD</strong>
+              <span class="price-m"></span>
+            </p>
+            {% endif %}
+            {% if value contains '6 Inch' %}
+            <p >
+              <strong>THICK</strong>
+              <span class="price-m"></span>
+            </p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="right-bc">
+          <div class="icon-image">
+            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/thickk.png?v=1631074140">
+          </div>
+          <div class="_prodSizeInfo" >
+            <h5>Select this if you're:</h5>
+            {% if value contains '4 Inch' %}
+            <p>5'3" or shorter</p>
+            {% endif %}
+            {% if value contains '5 Inch' %}
+            <p>5'4" to 6'3"</p>
+            {% endif %}
+            {% if value contains '6 Inch' %}
+            <p>6'4" or taller</p>
+            {% endif %}
+          </div>
+        </div>
+      </label>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% endfor %}
+
+
+
+
+<style>
+
+  .radios.main-form-radios > div label {
+    display: inline-block;
+    margin-right: 12px;
+    padding: 8px;
+    width: 200px;
+    border-radius: 4px;
+    background-color: #e7e7fa;
+    font-size: 16px;
+    color: #927ca5;
+    text-align: center;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all .3s;
+    margin-bottom: 10px;
+  }
+
+  .radios.main-form-radios > div label {
+    width: 100% !important;
+    background: #fff !important;
+    margin-bottom: 10px;
+    color: #3a006e !important;
+    text-align: left !important;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px !important;
+    position: relative;
+    border: 3px solid transparent;
+  }
+  .left-bc {
+    display: flex;
+    align-items: center;
+    width: 40%;
+  }
+  .right-bc {
+    border-left: 2px solid #e5e5e5;
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    align-items: center;
+  }
+  [data-checkbox] {
+    width: 17px;
+    height: 17px;
+    border: 1px solid;
+    display: block;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  [data-checkbox] p {
+    padding-bottom: 10px;
+    font-weight: 700;
+    color: #9b86ae;
+  }
+  .variant-title {
+    padding-left: 10px;
+  }
+  .icon-image img {
+    max-height: 50px;
+  }
+  ._prodSizeInfo h5 {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .label.pos-abs {
+    display: none;
+  }
+  .main-form-radios input:checked + span {
+    background: #3a006e;
+    -moz-box-shadow: inset 0 0 0px 2px #fff;
+    -webkit-box-shadow: inset 0 0 0px 2px #fff;
+    box-shadow: inset 0 0 0 2px #fff;
+  }
+  .main_variant {
+    display: none;
+  }
+  .standard .label.pos-abs {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #00e2f7;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px;
+  }
+  [data-option="option2"] {
+    display: none;
+  }
+  .selected {
+    border-color: #00e2f7 !important;
+  }
+  .prodThick.se-swatch {
+    margin-bottom: 40px;
+  }
+  .prodThick.se-swatch p.labelf {
+    font-size: .75rem;
+    margin-bottom: 0;
+  }
+  @media screen and (max-width: 767px) {
+    .variant-title {
+      padding-left: 0px;
+    }
+    .radios.main-form-radios > div label{
+      padding: 20px 10px;
+    }
+    .variant-title strong {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<script>
+  $(document).on('change','.main_variant',function(){
+    var value = $(this).val();
+    $(document).find('[data-option="option2"] input[value="'+value+'"] + label').trigger('click');
+
+    $(document).find('[data-option="option2"] input[value="'+value+'"]').trigger('click');
+
+    $(document).find('.radios.main-form-radios > div label').removeClass('selected');
+
+    $(this).closest('label').addClass('selected')
+
+  })
+</script>
+
+{% endif %}

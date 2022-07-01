@@ -1,0 +1,521 @@
+{% include 'timer' %}
+
+<!-- <div class="backOrder">
+<span>MEMORIAL DAY SALE! SAVE UP TO:  <span style="color: #f80189;">35% SITEWIDE!</span></span>
+<a class="buyButt" href="https://www.pillowcube.com/products/pillow-cube-pro">Shop Sale</a>
+</div> -->
+
+<!-- Header -->
+{% assign is_landing = false %}
+
+{% if page.template_suffix == 'pillow-cubs-landing' %}
+{% assign is_landing = true %}
+{% endif %}
+
+{% if template contains 'bedding-landing' %}
+{% assign black_friday = true %}
+{% endif %}
+
+{% if black_friday %}
+{% assign class = "headerBanner header-beding headerBg" %}
+{% endif %}
+
+
+{% render 'sticky-atc-bar' %}
+
+<header class="{{ class }} header
+               {% if is_landing %}header-banner-page
+               {% endif %}
+               {% if template == 'index' %} headerBanner
+               {% elsif template != 'index' and is_landing == false %} headerBg
+               {% endif %}
+               "  >
+  <!-- Navbar -->
+  <nav class="navbar originalNav {% if is_landing %}zIndexIssue {% endif %}">
+    <div class="navbar-container">
+      <div class="container flexBox flexJcb flexAic">
+        <button id="menuBtn" class="menuBtn" type="button" role="button" onclick="menuToggle()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="https://www.pillowcube.com/" class="brandLogo">
+          {% if page.template_suffix == 'pillow-cubs-landing' %}
+          <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pillow-cube-logosasfd_2x_8d48c07c-0fea-4dfd-bfca-747dac930f5f.png?v=1633574111" alt="pillowcube brand logos" />
+          {% elsif black_friday %}
+          <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/logo__1.png?v=1634878420" alt="pillowcube brand logos" />
+          {% else %}
+          <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/logo.svg?v=1615505204" alt="pillowcube brand logos" />
+          {% endif %}
+        </a>
+
+        {% capture 'additional_links' %}
+
+        <h3>Additional Links</h3>
+        <ul class="noList">
+          <li>
+            <a href="/collections/pillowcases" class="pos-rel">
+              Pillowcases
+            </a>
+          </li>
+          <li>
+            <a href="/pages/social-clout" class="pos-rel">
+              Cube Nation
+            </a>
+          </li>
+          <li>
+            <a href="/pages/quiz" class="pos-rel">
+              Take The Pillow Sizing Quiz <span class="badge">NEW!</span>
+            </a>
+          </li>
+          <li>
+            <a href="/pages/about">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="/products/pillow-cube-gift-card">
+              Gift Cards
+            </a>
+          </li>
+          <!-- <li><a href="/pages/about">About Us</a></li> -->
+
+        </ul>
+
+        {% endcapture %}
+
+        {% capture 'pillow_cubes' %}
+        <ul class="left-menu noList container">
+
+          <li>
+            <a href="/products/side-sleeper-pro">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2237.png?v=1635899982" alt="Side Sleeper Pillow" />
+              <span>Side Sleeper Pro</span>
+            </a>
+          </li>
+          <li>
+            <a href="/collections/ice-cube-cooling-pillows">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2239.png?v=1635900360" alt="Ice Cube Cooling Pillows" />
+              <span>Ice Cube Pillows</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/cross-sleeper-pillow">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2446.png?v=1651167514" alt="Cross Sleeper - Back And Side Sleeping Pillow" />
+              <span>Cross Sleeper</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/kneezy-pillow">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2445.png?v=1651167514" alt="Kneezy - Knee and Leg Pillow" />
+              <span>Kneezy</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/cube">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2238.png?v=1635899982" alt="Sidekick - Compact Travel Pillow" />
+              <span>Sidekick</span>
+            </a>
+          </li>
+          <li class="last-child">
+            {{ additional_links }}
+          </li>
+        </ul>
+        {% endcapture %}
+
+        {% capture 'sheets_bedding' %}
+        <ul class="left-menu noList container">
+
+
+          <li>
+            <a href="/products/zip-fit-sheets">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2235.png?v=1635899982" alt="" />
+              <span>Zipfit Sheets</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/mattress-protector-with-ice-cube">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2234.png?v=1635900360" alt="" />
+              <span>ZipFit Cooling Mattress Protector</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/comforter-duvet">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2236.png?v=1635899987" alt="" />
+              <span>Cubit Comforter</span>
+            </a>
+          </li>
+          <li>
+            <a href="/collections/pillowcases">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pillow_cases_6c0f0c1a-406a-48d9-9094-d46896569fe0.png?v=1636578140" alt="" />
+              <span>Pillowcases</span>
+            </a>
+          </li>
+          <li class="last-child">
+            {{ additional_links }}
+          </li>
+
+        </ul>
+        {% endcapture %}
+
+        {% capture 'pillow_kids' %}
+        <ul class="left-menu noList container">
+
+          <li>
+            <a href="/products/pillow-cubs">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2241.png?v=1635899982" alt="" />
+              <span>Silly Shark</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/pillow-cubs">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2242.png?v=1635899982" alt="" />
+              <span>Uniquely Unicorn</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/pillow-cubs">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2243.png?v=1635899982" alt="" />
+              <span>Sleepy Sloth</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/pillow-cubs">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2244.png?v=1636481849" alt="" />
+              <span>Helpful Husky</span>
+            </a>
+          </li>
+          <li>
+            <a href="/products/pillow-cubs">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_2245.png?v=1636481849" alt="" />
+              <span>Bravery Bear</span>
+            </a>
+          </li>
+          <li class="last-child">
+            {{ additional_links }}
+          </li>
+        </ul>
+        {% endcapture %}
+
+
+        <ul class="menuList flexBox flexJcb flexAic noList" id="menuList">
+          <li class="mobile-only top-header-logo">
+            <button id="_menuBtn" class="menuBtn on" type="button" role="button" onclick="menuToggle()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <a href="https://www.pillowcube.com/" class="brandLogo">
+              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/logo.svg?v=1615505204" alt="pillowcube brand logos">
+            </a>
+            <a href="/cart" class="cartBtn header-btn"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_40.png?v=1616482676" alt="pillowcube shopping cart icon"> <span class="totalItems" >{{ cart.item_count }}</span></a>
+          </li>
+          <li class="subMenu originalSub">
+            <a class="with-sub-menu" href="https://www.pillowcube.com/#shopPillows">
+              <div class="disp-flex">
+                <span>Pillow Cubes <img data-swift-lazy="1" loading="lazy" class="nav-arrow" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/arrowDown.svg?v=1615505203" alt="arrow down icon" /></span>
+                <span class="mobile-only"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/arrow-down.jpg?v=1636090931"></span>
+              </div>
+            </a>
+            <div class="subMenuList ">
+              {{ pillow_cubes }}
+            </div>
+          </li>
+          <li class="subMenu originalSub">
+            <a class="with-sub-menu" href="https://www.pillowcube.com/#shopPillows">
+              <div class="disp-flex">
+                <span>Sheets & Bedding <img data-swift-lazy="1" loading="lazy" class="nav-arrow" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/arrowDown.svg?v=1615505203" alt="arrow down icon" /></span>
+                <span class="mobile-only"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/arrow-down.jpg?v=1636090931"></span>
+              </div>
+
+
+            </a>
+            <div class="subMenuList ">
+              {{ sheets_bedding }}
+            </div>
+          </li>
+
+
+          <li class="subMenu originalSub">
+            <a class="with-sub-menu" href="/products/pillow-cubs">
+              <div class="disp-flex">
+                <span>Kid's Pillows <img data-swift-lazy="1" loading="lazy" class="nav-arrow" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/arrowDown.svg?v=1615505203" alt="arrow down icon" /></span>
+                <span class="mobile-only"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/arrow-down.jpg?v=1636090931"></span>
+              </div>
+
+
+            </a>
+            <div class="subMenuList ">
+              {{ pillow_kids }}
+            </div>
+          </li>
+
+          <li><a href="/collections/deals">Deals</a></li>
+          <!--<li><a href="/collections/bundles">Bundles</a></li>
+<li><a href="/collections/clearance">Clearance</a></li>-->
+          <!-- <li><a href="/pages/about">About Us</a></li> -->
+          <!-- <li><a href="/pages/reviews">5-Star Reviews</a></li> -->
+          <!-- <li><a href="/pages/quiz">Pillow Selector</a></li> -->
+          <li class="last-child mobile-only">
+            {{ additional_links }}
+          </li>
+        </ul>
+
+        <a href="/cart" class="cartBtn header-btn">
+
+          <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Group_40.png?v=1616482676" alt="pillowcube shopping cart icon">
+
+          <span class="totalItems">{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+
+  {% if template == 'index' %}
+  <!-- Banner -->
+  <div class="bannerBox">
+    <div class="container">
+      <div class="bannerContent">
+        <p class="upcase banner-desktop">{{ section.settings.main_banner_subtitle }}</p>
+        <h1 class="upcase banner-desktop">
+          {{ section.settings.main_banner_title | newline_to_br }}
+        </h1>
+        <a href="{{ section.settings.main_banner_url }}" class="btn btnYellow  banner-desktop">{{ section.settings.main_banner_url_text }}</a>
+
+        <p class="upcase banner-mobile">{{ section.settings.main_banner_subtitle_mobile | newline_to_br }}</p>
+        <h1 class="upcase banner-mobile">
+          {{ section.settings.main_banner_title_mobile | newline_to_br }}
+        </h1>
+        <a href="{{ section.settings.main_banner_url_mobile }}" class="btn btnYellow  banner-mobile">{{ section.settings.main_banner_url_text_mobile }}</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if page.template_suffix == 'pillow-cubs-landing' %}
+  <video playsinline autoplay muted loop id="landing_page_video">
+    <source src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/yt5s.com-Pillow_Cubs_Are_On_Your_Side.mp4?v=1634594815" type="video/mp4">
+  </video>
+  <!-- <img data-swift-lazy="1" loading="lazy" id="landing_page_video" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/yt5s.com-Pillow_Cubs_Are_On_Your_Side.mp4?v=1634594815" alt=""> -->
+
+  <!-- <iframe class=‘sproutvideo-player’ src=‘https://videos.sproutvideo.com/embed/4d9dd8b51819e5c7c4/256884a687788b75?autoPlay=true&amp;playerTheme=light&amp;showControls=false&amp;emailTopText=Enter%20your%20email%20address%20to%20view%20this%20video.&amp;loop=true’ style=‘position:absolute;width:100%;height:100%;left:0;top:0’ frameborder=‘0’ allowfullscreen></iframe> -->
+
+  <div class="bannerBox">
+    <div class="container">
+      <div class="bannerContent">
+        <p>MEET THE PILLOW CUBS</p>
+        <h1>Toy By Day,<br /> Pillow By Night</h1>
+        <a href="/products/pillow-cubs" class="btn btnRose">SHOP NOW</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% render "cart-drawer" %}
+</header>
+
+<!-- <div class="promoBanner">
+<div class="items">
+<div class="item">
+<div class="name">2 PRO Cubes + 2 Cases</div>
+<div class="image"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/two_pros_2x_a4b18698-e462-41e2-b796-5965bd3a8804.png?v=1621550256" alt="2 Pro Cubes"></div>
+<a href="/products/two-pro-cubes-two-cases" class="btn btnCyan">Shop Deal</a>
+</div>
+
+<div class="item mid">
+<div class="best"><div class="text">BEST DEAL</div></div>
+<div class="name">6 PRO Cubes + 6 Cases</div>
+<div class="image"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/six_pros_2x_55d9ede6-c0a6-4c39-b636-64f33b07b3cb.png?v=1621550256" alt="Six Pro Cases"></div>
+<a href="/products/six-pro-cubes-six-cases" class="btn btnYellow">Shop Deal</a>
+</div>
+
+<div class="item">
+<div class="name">2 CLASSIC Cubes + 2 Cases</div>
+<div class="image"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/two_classics_2x_3b44ccd3-ee88-426d-9ad2-1f675fedc00d.png?v=1621550256" alt="2 Pro Classics"></div>
+<a href="/products/two-classic-cubes-two-cases" class="btn btnCyan">Shop Deal</a>
+</div>
+</div>
+<div class="upTo">Up to 50% off</div>
+</div> -->
+
+
+<script>
+  new Vue({
+    el: '.cartBtn',
+    delimiters: ["[[","]]"],
+    data() {
+      return {
+        total_items: 0
+      }
+    },
+
+    mounted() {
+      this.refreshCart();
+    },
+
+    methods: {
+      refreshCart() {
+        axios.get('/cart.js')
+        .then(response => {
+          this.total_items = response.data.items.length;
+        })
+      }
+    }
+  });
+
+  function initStickyHeader() {
+    let previewPos = $(window).scrollTop();
+    $(window).scroll(function(){
+      var pos = $(window).scrollTop();
+      let navbarContainer = $(".sticky-navbar .navbar-container")
+      const navbarHeight = navbarContainer.innerHeight();
+      if (pos > 0) {
+        navbarContainer.addClass('scrolling');
+      } else {
+        navbarContainer.removeClass('scrolling');
+      }
+      if (pos <= 0) {
+        navbarContainer.removeClass('scrolling-up');
+        navbarContainer.removeClass('scrolling-down');
+      }
+      if (previewPos < pos && !navbarContainer.hasClass('scrolling-down') && pos >= navbarHeight) {
+        navbarContainer.removeClass('scrolling-up');
+        navbarContainer.addClass('scrolling-down');
+      } else if (previewPos > pos && navbarContainer.hasClass('scrolling-down')) {
+        navbarContainer.addClass('scrolling-up');
+        navbarContainer.removeClass('scrolling-down');
+      }
+      previewPos = pos;
+    });
+  }
+  initStickyHeader();
+</script>
+
+{{ 'sticky-header.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .bannerBox h1 .bigger {
+    font-size: 67px;
+  }
+  .banner-mobile {
+    display: none;
+  }
+  @media screen and (max-width: 767px) {
+    {% if section.settings.main_banner_title_mobile != blank or section.settings.main_banner_subtitle_mobile != blank or section.settings.main_banner_url_text_mobile != blank %}
+
+    .banner-mobile {
+      display: block;
+    }
+    .banner-desktop {
+      display: none;
+    }
+
+    {% endif %}
+    .bannerBox h1 .bigger {
+      font-size: 32px;
+    }
+    .bannerBox .btn {
+      width: 188px;
+    }
+  }
+    {% if section.settings.main_banner_img != blank %}
+    .headerBanner {
+      background-image: url({{ section.settings.main_banner_img | image_url }});
+    }
+    {% endif %}
+    {% if section.settings.main_banner_img_mobile != blank %}
+    @media screen and (max-width: 767px) {
+      .headerBanner {
+        background-image: url({{ section.settings.main_banner_img_mobile | image_url }});
+      }
+    }
+    {% endif %}
+    {% if section.settings.nav_color != blank %}
+    .headerBg {
+      background-color: {{ section.settings.nav_color }}
+    }
+    {% endif %}
+</style>
+
+{% schema %}
+{
+"name": "Homepage",
+"settings": [
+{
+"type": "header",
+"content": "Homepage banner"
+},
+{
+"type": "image_picker",
+"id": "main_banner_img",
+"label": "Banner image"
+},
+{
+"type": "textarea",
+"id": "main_banner_title",
+"label": "Title",
+"default": "Title"
+},
+{
+"type": "text",
+"id": "main_banner_subtitle",
+"label": "Subtitle",
+"default": "Subtitle"
+},
+{
+"type": "url",
+"id": "main_banner_url",
+"label": "Button url"
+},
+{
+"type": "text",
+"id": "main_banner_url_text",
+"label": "Button text"
+},
+{
+"type": "header",
+"content": "Homepage banner mobile"
+},
+{
+"type": "image_picker",
+"id": "main_banner_img_mobile",
+"label": "Banner image"
+},
+{
+"type": "textarea",
+"id": "main_banner_title_mobile",
+"label": "Title",
+"default": "Title"
+},
+{
+"type": "textarea",
+"id": "main_banner_subtitle_mobile",
+"label": "Subtitle",
+"default": "Subtitle"
+},
+{
+"type": "url",
+"id": "main_banner_url_mobile",
+"label": "Button url"
+},
+{
+"type": "text",
+"id": "main_banner_url_text_mobile",
+"label": "Button text"
+},
+{
+"type": "header",
+"content": "Navigation"
+},
+{
+"type": "color",
+"id": "nav_color",
+"label": "Nav color for other pages",
+"default": "#00e2f9"
+}
+]
+}
+{% endschema %}

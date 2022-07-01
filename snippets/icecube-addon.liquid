@@ -1,0 +1,237 @@
+{% assign iceCubeHandle = product.metafields.custom.ice_cube_upgrade %}
+
+{% if iceCubeHandle != blank %}
+<div class="icecube-addon-side-sleeper">
+  <style>
+    .icecube-addon {
+      display: block;
+      width: 100%;
+      margin-bottom: 30px;
+      max-width: 480px;
+      background: #fff;
+      border-radius: 20px;
+    }
+    .header-add {
+      display: flex;
+      align-items: center;
+      background: #00e2f7;
+      padding: 10px 20px 20px;
+      border-radius: 15px 15px 0 0;
+    }
+    .header-add .title {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      margin-left: 15px;
+    }
+    .header-add .title span {
+      margin-right: 8px;
+    }
+    .icecube-addon-side-sleeper .flex {
+      display: flex;
+      background: #fff;
+      padding: 25px 10px 10px;
+      align-items: center;
+      border-radius: 10px;
+      margin-top: -10px;
+      flex-wrap: nowrap;
+    }
+    .icecube-addon-side-sleeper .flex-item {
+      flex-basis: 75%;
+    }
+    .icecube-addon-side-sleeper .pd-img, .icecube-addon-side-sleeper .pd-img img {
+      height: 200px;
+      align-self: flex-start;
+      object-fit: contain;
+    }
+    .icecube-addon .prod-details {
+      display: flex;
+      background: #fff;
+      padding: 25px 20px;
+      align-items: center;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      margin-top: -10px;
+    }
+
+    .icecube-addon-side-sleeper .prod-details {
+      flex-wrap: wrap;
+    }
+    body .icecube-addon-side-sleeper .prod-details {
+      padding: 10px;
+    }
+    .icecube-addon-side-sleeper .pd-check {
+      align-self: flex-start;
+      margin-top: .15rem;
+    }
+    #ice_addon {
+      -webkit-appearance: checkbox;
+      width: 18px;
+      height: 18px;
+      margin-right: 15px;
+    }
+    .icecube-addon-side-sleeper .price-title {
+      flex-basis: 75%;
+    }
+    .icecube-addon .price-title .title {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .icecube-addon .price {
+      font-size: 25px;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .icecube-addon-side-sleeper .price {
+      flex-basis: 100%;
+    }
+
+    .desc-add-on {
+      padding: 0 47px 20px 53px;
+      text-align: left;
+      font-size: 12px;
+      line-height: initial;
+    }
+
+    body .icecube-addon-side-sleeper .desc-add-on {
+      padding: 20px 10px;
+    }
+    .icecube-addon .pd-img img {
+      border-radius: 7px;
+      margin-right: 16px;
+      width: 100%;
+      height: 200px;
+      align-self: flex-start;
+      object-fit: contain;
+    }
+  </style>
+
+  {% assign udproduct = all_products[iceCubeHandle] %}
+
+  {% unless udproduct == empty %}
+  <script type="application/json" class="ProductJson-{{ udproduct.id }}" >
+      {{ udproduct | json }}
+  </script>
+  {% endunless %}
+
+  {% assign product_first_var = product.selected_or_first_available_variant %}
+  {% assign price_add = '$20' %}
+  <div class="hidden addonVariants">
+    {% for variant in udproduct.variants %}
+    {% assign var_at_title = variant.title | replace : 'Pro -','' | replace : 'Classic -','' | strip %}
+    {% if var_at_title == 'Regular' %}
+    {% assign var_at_title = "5 Inch - 12x24" %}
+    {% elsif var_at_title == 'Thick' %}
+    {% assign var_at_title = "6 Inch - 12x24" %}
+    {% elsif var_at_title == 'Thin' %}
+    {% assign var_at_title = "4 Inch - 12x24" %}
+    {% endif %}
+
+    {% assign main_pro_title_var = product_first_var.title %}
+    {% if product.handle == 'pillow-cube-pro' or product.handle == 'side-sleeper-pro' %}
+    {% assign main_pro_title_var = product_first_var['option2'] %}
+    {% endif %}
+    {% if var_at_title == main_pro_title_var %}
+    {% assign price_add = variant.price  %}
+    {% assign price_compare = variant.compare_at_price %}
+    {% assign save_percent = price_add | times: 1.0 | divided_by: price_compare | times: 100 | round %}
+    {% endif %}
+    <input type="radio" class="hidden-ice-addon-radio" data-price="{{ variant.price | money }}" name="ice_addon" data-title="{{ var_at_title | remove: '"' }}" value="{{ variant.id }}">
+    {% endfor %}
+  </div>
+  <label for="ice_addon" class="ice-addon-label">
+    <div class="icecube-addon icecube-addon-side-sleeper">
+      <div class="header-add">
+        <img data-swift-lazy="1" loading="lazy" style="max-width: 30px;" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/tag.png?v=1628749202">
+        <div class="title">
+          <span>
+            <strong>
+              {% if product.metafields.custom.ice_cube_widget_header != blank %}
+              {{ product.metafields.custom.ice_cube_widget_header }}
+              {% else %}
+              SLEEP 10° COLDER: UPGRADE NOW!
+              {% endif %}
+            </strong>
+          </span>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="flex-item">
+          <div class="prod-details">
+            <div class="pd-check">
+              <input type="checkbox" name="addon_ice" id="ice_addon">
+            </div>
+            <div class="price-title">
+              <div class="title">
+                {{ udproduct.title }}
+              </div>
+            </div>
+            <div data-price="{{ price_add }}" class="price">
+              <span>+$30.00</span>
+            </div>
+          </div>
+          <div class="desc-add-on">
+            {% if product.metafields.custom.ice_cube_widget_description != blank %}
+            {{ product.metafields.custom.ice_cube_widget_description }}
+            {% else %}
+            Finally, be one of the cool kids. Using a unique weave and high-performance fibers, the Ice Cube Cooling Cover keeps every side of the pillow cool all night long.
+            {% endif %}
+          </div>
+        </div>
+        <div class="pd-img"><img data-swift-lazy="1" loading="lazy" src="{{ 'icecubeimage.png' | asset_img_url: 'x250' }}"></div>
+      </div>
+    </div>
+  </label>
+</div>
+<div class="from-addone">
+</div>
+<script>
+  $(document).ready(function(){
+
+    function addOnVariant(){
+      setTimeout(function(){
+        var variant = $(document).find('[name="ice_addon"]:checked').val();
+        if( $(document).find('[name="addon_ice"]').is(":checked") ){
+          $('.from-addone').html('<input type="hidden" name="id" value="'+variant+'">')
+        }else{
+          $('.from-addone').html('');
+        }
+      },1000);
+    }
+
+    function changeVariant(){
+      var variantTitle = $(document).find('[name="id"] option:selected').text();
+      console.log(variantTitle);
+      $(document).find('.addonVariants input').each(function(){
+        var title = $(this).attr('data-title'),
+            titleArr = title.split('-'),
+            titlefir = titleArr[0].trim();
+
+        console.log(titlefir)
+        if( variantTitle.indexOf(titlefir) >= 0 ){
+          $(this).trigger('click')
+        }
+      });
+    }
+
+    $(document).on('change','#ice_addon',function(){
+      var form = $(this).closest('form');
+      changeVariant()
+      addOnVariant()
+    });
+
+
+    $(document).on('change','.option-selector__btns input',function(){
+      var value = $(this).val();
+      console.log(value);
+      changeVariant()
+      $(document).find('.hidden-ice-addon-radio[data-title="'+value+'"]').trigger('click');
+      addOnVariant()
+    });
+
+  });
+
+</script>
+
+{% endif %}

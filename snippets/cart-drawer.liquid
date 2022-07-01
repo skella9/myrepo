@@ -1,0 +1,140 @@
+{{ "cart-drawer.scss.css" | asset_url | stylesheet_tag}}
+{% assign shipping_product = all_products['shipping-protection'] %}
+{% assign shipping_variant = shipping_product.selected_or_first_available_variant.id %}
+{% for item in cart.items %}
+{% if item.id == shipping_variant %}
+{% assign shipping_product_in_cart = true %}
+{% endif %}
+{% endfor %}
+<div class="cart-drawer">
+  <div class="loading-shadow"></div>
+  <div class="inner-box drawer-header aic jcb bottom-border">
+    <h1>Your Cart</h1>
+    <div class="drawer-close">&times;</div>
+  </div>
+
+
+<div class="shipping-protection-container inner-body fdc bottom-border"  {% if cart.item_count == 0 %}style="display: none"{% endif %}>
+    <div class="cart-item-container dif jcb aic r">
+            <a href="#" class="thumb-link">
+              <img data-swift-lazy="1" loading="lazy" src="{{ shipping_product.featured_image | img_url: '80x' }}" width="80" alt="">
+            </a>
+            <div class="item-body dif fdc">
+              <div class="title-area dif jcb">
+                <a href="#" class="title">{{ shipping_product.title }}</a>
+                <a class="hidden"
+                  href="/cart/change.js?id={{ shipping_variant }}&quantity=0"
+                  remove-btn
+                >
+                  <i class="fa fa-trash"></i>
+                </a>
+              </div>
+              <div class="detail-area dif aic">
+              <div class="switch"><input id="shipping_protection_cart_drawer" {% unless cart.item_count == 0 %}checked="checked"{% endunless %} type="checkbox" name="insurance" value="40405670133918" product-id="{{ shipping_product.id }}" data-price="{{ shipping_product.price }}" class="hidden"> <label for="shipping_protection_cart_drawer"><span class="inner"></span></label></div>
+                <input class="hidden"
+                  type="number"
+                  value="1"
+                  min="0"
+                  pattern="[0-9]*"
+                  data-item-index="{{ shipping_variant }}"
+                  item-quantity-input-id
+                >
+                <p class="item-price">
+                  <span>{{ shipping_product.price | money }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+</div>
+  
+
+  <div class="inner-box drawer-body fdc bottom-border">
+
+
+
+    {% if cart.item_count > 0 %}
+
+
+      {% for line_item in cart.items %}
+        <div class="cart-item-container dif jcb aic bottom-border">
+          <a href="{{line_item.url}}" class="thumb-link">
+            <img data-swift-lazy="1" loading="lazy" src="{{line_item.image | product_img_url: '1920x'}}" width="80" alt="">
+          </a>
+          <div class="item-body dif fdc">
+            <div class="title-area dif jcb">
+              <a href="{{line_item.url}}" class="title">{{line_item.title}}</a>
+              <a href="{{ routes.cart_change_url }}?line={{forloop.index}}&quantity=0" remove-btn><i class="fa fa-trash"></i></a>
+            </div>
+            <div class="detail-area dif aic">
+              <input type="number" value="{{line_item.quantity}}" min="0" pattern="[0-9]*">
+              <p class="item-price">
+                {% if line_item.variant.compare_at_price > line_item.variant.price %}
+                  <span class="was-price">{{line_item.variant.compare_at_price | money}}</span>
+                {% endif %}
+                <span>{{line_item.variant.price | money}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p class="empty-text">Your cart is empty</p>
+    {% endif %}
+  </div>
+  <div class="drawer-footer">
+    <div class="inner-box drawer-price-area aic jcb bottom-border">
+      <p>Total</p>
+      <p class="total-price">{{cart.total_price | money}}</p>
+    </div>
+    <div class="inner-box btn-area jcb">
+      <a href="{{routes.cart_url}}" class="btn btnRose cartBtn">View Cart</a>
+      <a onclick="checkShippingProtection(event)" class="btn btnRose">Checkout</a>
+    </div>
+  </div>
+</div>
+
+{{ "cart-drawer.js" | asset_url | script_tag }}
+<script>
+function checkCart(data){
+    console.log(data)
+    let hasShippingProtection;
+    data.items.forEach(function(item, index){
+    if (item.title.includes('Shipping Insurance')){   
+      hasShippingProtection = 'has shipping protection'
+    }
+  })
+  console.log(hasShippingProtection)
+  if (hasShippingProtection !== 'has shipping protection'){
+      let formData = {
+        items: [{
+        'id': 40405670133918,
+        'quantity': 1
+        }]
+      }
+    fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          console.log('checkout disabled')
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        })
+  }
+}
+
+function checkShippingProtection(event){
+
+event.preventDefault()
+fetch(window.Shopify.routes.root + 'cart.js').then(response => response.json()).then(data => { 
+  checkCart(data)
+ })
+ window.location.href = '/checkout';
+}
+
+
+</script>

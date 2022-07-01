@@ -1,0 +1,237 @@
+{% assign selected_var = product.selected_or_first_available_variant %}
+<div class="custom-swatches">
+  {% for option in product.options_with_values %}
+  {% assign opt_title = option.name | downcase %}
+  {% assign optname = 'option' | append : option.position %}
+  {% if opt_title contains 'style' %}
+  <p class="labels">{{forloop.index }}. Select pillow {{ option.name }}</p>
+  {% else %}
+  <p class="labels">{{forloop.index }}. Select your {{ option.name }}</p>
+  {% endif %}
+
+  <div class="opt-values">
+    {% for value in option.values %}
+    <label data-name="{{ optname }}" data-title="{{ value }}" class="">
+      <div class="pro-left-bc">
+        <input {% if selected_var[optname] == value %}checked{% endif %} data-title="{{ value }}" type="radio" name="{{ optname }}" class="main_variant" value="{{ value }}"> 
+        <span data-checkbox="">
+          <p class="selector"></p>
+        </span> 
+
+      </div> 
+      <div class="image">
+        {% if value == '4 Inch' %}
+        <div class="with-price">
+          <span class="mp-titi">Thin</span>
+          <span class="mp-price"></span>
+        </div>
+        {% elsif value == '5 Inch' %}
+        <div class="with-price">
+          <span class="mp-titi">Standard</span>
+          <span class="mp-price"></span>
+        </div>
+        {% elsif value == '6 Inch' %}
+        <div class="with-price">
+          <span class="mp-titi">Thick</span>
+          <span class="mp-price"></span>
+        </div>
+        {% endif %}
+
+        {% if value == 'Pro - 12x24' %}
+        <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pro.png?v=1634815923">
+        {% elsif value == 'Classic - 12x12' %}
+        <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/classic_0d61c509-e764-4ac5-9606-6038350a0218.png?v=1634815923">
+        {% endif %}
+      </div>
+      <div class="_right-bc">
+        {% if value == 'Pro - 12x24' or value == 'Classic - 12x12' %}
+        <div class="variant-title">
+
+          <strong>{{ value }}</strong>
+        </div>
+        {% endif %}
+
+        <div class="_prodSizeInfo">
+          {% if value == 'Pro - 12x24' %}
+          Side Sleeper for Beds
+          {% elsif value == 'Classic - 12x12' %}
+          Nap & Travel Size
+          {% endif %}
+
+          {% if value == '4 Inch' %}
+          <div class="with-img-desc">
+            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/thickk.png?v=1631074140">
+            <span class="mp-tit">
+              Select this if you're:<br>
+              <strong>5'3" or shorter</strong>
+            </span>
+          </div>
+          {% elsif value == '5 Inch' %}
+          <span class="label pos-abs">Fits Most people</span>
+          <div class="with-img-desc">
+            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/thickk.png?v=1631074140">
+            <span class="mp-tit">
+              Select this if you're:<br>
+              <strong>5'4" to 6'3"</strong>
+            </span>
+          </div>
+          {% elsif value == '6 Inch' %}
+          <div class="with-img-desc">
+            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/thickk.png?v=1631074140">
+            <span class="mp-tit">
+              Select this if you're:<br>
+              <strong>6'4" or taller</strong>
+            </span>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </label>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+<style>
+  .custom-swatches p.labels {
+    padding-bottom: 10px;
+    font-weight: 700;
+    color: #9b86ae;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: 26px;
+
+  }
+  .opt-values label {
+    display: flex;
+    justify-content: flex-start;
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 18px 20px;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    min-height: 105px;
+    position: relative;
+  }
+  .opt-values img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+  }
+  .pro-left-bc {
+    display: flex;
+  }
+  .pro-left-bc input:checked + span {
+    background: #3a006e;
+    -moz-box-shadow: inset 0 0 0 2px #fff;
+    -webkit-box-shadow: inset 0 0 0 2px #fff;
+    box-shadow: inset 0 0 0 2px #fff;
+  }
+  ._right-bc {
+    font-size: 17px;
+    margin-left: 40px;
+    width: 60%;
+  }
+  .opt-values .image {
+    margin-left: 10px;
+  }
+  ._right-bc .variant-title {
+    padding-left: 0;
+  }
+  .with-price {
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  [data-title="4 Inch"] img {
+    height: 40px;
+    width: auto;
+  }
+  [data-title="5 Inch"] img {
+    height: 50px;
+    width: auto;
+  }
+  [data-title="6 Inch"] img {
+    height: 60px;
+    width: auto;
+  }
+  .with-img-desc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 2px solid #e5e5e5;
+    padding-left: 20px;
+  }
+  label[data-title="5 Inch"] {
+    border: 2px solid #01e3f9;
+  }
+  [data-title="5 Inch"] .label.pos-abs{
+    display:block;
+  }
+  .label.pos-abs {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    background: #00e2f7;
+    border-radius: 6px 0px 8px 0px;
+    font-size: 13px;
+    padding: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  @media screen and (max-width: 767px) {
+    ._right-bc {
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    .opt-values label{
+      padding: 10px 10px;
+    }
+    .with-img-desc{
+      padding-left: 10px;
+    }
+    .mp-tit {
+      font-size: 14px;
+      padding-left: 12px;
+    }
+    .opt-values label{
+      min-height: 90px;
+    }
+  }
+</style>
+<div id="main_product_var" data-variants="{{ product.variants | json | escape }}">
+</div>
+<script>
+  $(document).ready(function(){
+
+    $(document).find('[data-name="option1"][data-title="Pro - 12x24"]').trigger('click');
+
+    function linkedOptions(parent){
+      var opt1 = $(parent).find('[name="option1"]:checked').val(),
+          variants = $.parseJSON($('#main_product_var').attr('data-variants')),
+          second_variants = [];
+      $.each(variants,function(i,item){
+
+        if(item.option1 == opt1){
+          console.log(item.option1 +' '+ opt1)
+          second_variants.push(item.option2)
+        }
+      });
+      $(parent).find('[data-name="option2"]').hide();
+      $.each(second_variants,function(i,item){
+        $(parent).find('[data-name="option2"][data-title="'+item+'"]').show();
+      });
+    }
+
+    $(document).on('change','.custom-swatches .main_variant',function(){
+      var parent = $(this).closest('.main-option-var');
+      linkedOptions(parent);
+    });
+
+  });
+</script>

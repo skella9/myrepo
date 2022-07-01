@@ -1,0 +1,204 @@
+
+                    <div class="bedding-title">Add the whole bedding system</div>
+            <div class="bundle-save"> <span>Bundle & Save</span> <span class="save">Save Up To 20%</span></div>
+
+            {% if product.handle != 'ice-cube-cooling-pillow' and product.handle != 'ic-2-test' %}
+            {% assign second_product = all_products['ice-cube-cooling-pillow'] %}
+            {% assign selected_var_sec = second_product.selected_or_first_available_variant %}
+            <div class="variant-label_z upsells" data-comp="{{ selected_var_sec.compare_at_price }}" data-diff="{{ selected_var_sec.compare_at_price | minus : selected_var_sec.price }}" data-price ="{{ selected_var_sec.price }}">
+
+
+              <div class="disp-flex-rad">
+                <div class="chekbox">
+                  <label for="upsell_1_d">
+                    <input id="upsell_1_d" type="checkbox" name="upsell_1">
+                    <img data-swift-lazy="1" loading="lazy" class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
+                    <img data-swift-lazy="1" loading="lazy" class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
+                  </label>
+                </div>
+
+
+                <div class="right-box">
+                  <div class="prod-title-image">
+                    <div class="img-left">
+                      <img data-swift-lazy="1" loading="lazy" src="{{ second_product.featured_image | img_url:'200x' }}">
+                    </div>
+                    <div class="title">
+                      <div>{{second_product.title}}</div>
+                      <div>
+                        <span class="was-price">+{{ selected_var_sec.compare_at_price | money }}</span>
+                        <span class="price colorRose">+{{ selected_var_sec.price | money }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="desc">Made with Frozen Fibers our Ice Cube Side Sleeper Pillow will keep you cool all night long.</div>
+                  <div class="box-select">
+                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                    <select class="inner-upsells" name="upsell_1">
+                      {% for variant in second_product.variants %}
+                      <option data-comp_price="{{ variant.compare_at_price }}" data-price="{{ variant.price }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            {% endif %}
+
+            {% if product.handle != 'mattress-protector-with-ice-cube' %}
+            {% assign third_product = all_products['mattress-protector-with-ice-cube'] %}
+            {% assign third_product_var_sec = third_product.selected_or_first_available_variant %}
+            <div class="variant-label_z upsells" data-comp="{{ third_product_var_sec.compare_at_price }}" data-diff="{{ third_product_var_sec.compare_at_price | minus : third_product_var_sec.price }}" data-price ="{{ third_product_var_sec.price }}">
+
+
+              <div class="disp-flex-rad">
+                <div class="chekbox">
+                  <label for="upsell_2_d">
+                    <input id="upsell_2_d" type="checkbox" name="upsell_2">
+                    <img data-swift-lazy="1" loading="lazy" class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
+                    <img data-swift-lazy="1" loading="lazy" class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
+                  </label>
+                </div>
+
+
+                <div class="right-box">
+                  <div class="prod-title-image">
+                    <div class="img-left">
+                      <img data-swift-lazy="1" loading="lazy" src="{{ third_product.featured_image | img_url:'200x' }}">
+                    </div>
+                    <div class="title">
+                      <div>{{third_product.title}}</div>
+                      <div>
+                        <span class="was-price">+{{ third_product_var_sec.compare_at_price | moneyy }}</span>
+                        <span class="price colorRose">+{{ third_product_var_sec.price | money }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="desc">
+                    The mattress protector will keep you cool all night, it also zips together to stay in place
+                  </div>
+
+                  <div class="box-select">
+                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                    <select class="inner-upsells" name="upsell_2">
+                      {% for variant in third_product.variants %}
+                      <option data-comp_price="{{ variant.compare_at_price }}" data-price="{{ variant.price }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% endif %}
+
+            {% if product.handle != 'comforter-duvet' %}
+            {% assign f_product = all_products['comforter-duvet'] %}
+            {% assign f_product_var_sec = f_product.selected_or_first_available_variant %}
+            <div class="variant-label_z upsells" data-comp="{{ f_product_var_sec.compare_at_price }}" data-diff="{{ f_product_var_sec.compare_at_price | minus : f_product_var_sec.price }}" data-price ="{{ f_product_var_sec.price }}">
+
+
+              <div class="disp-flex-rad">
+                <div class="chekbox">
+                  <label for="upsell_3_d">
+                    <input id="upsell_3_d" type="checkbox" name="upsell_3">
+                    <img data-swift-lazy="1" loading="lazy" class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
+                    <img data-swift-lazy="1" loading="lazy" class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
+                  </label>
+                </div>
+
+
+                <div class="right-box">
+                  <div class="prod-title-image">
+                    <div class="img-left">
+                      <img data-swift-lazy="1" loading="lazy" src="{{ f_product.featured_image | img_url:'200x' }}">
+                    </div>
+                    <div class="title">
+                      <div>{{f_product.title}}</div>
+                      <div>
+                        <span class="was-price">+{{ f_product_var_sec.compare_at_price | money }}</span>
+                        <span class="price colorRose">+{{ f_product_var_sec.price | money }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="desc">
+                    The Cubit Duvet/Comforter is what you need to flip your bed from boring into a fluffy paradise. With a super soft hypoallergenic fabric and triple loft vegan down fill. The second you cuddle up in this amazing duvet you will never want to get out of bed again.
+                  </div>
+
+                  <div class="box-select">
+                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                    <select class="inner-upsells" name="upsell_3">
+                      {% for variant in f_product.variants %}
+                      <option data-comp_price="{{ variant.compare_at_price }}" data-price="{{ variant.price }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+
+            {% if product.handle != 'zip-fit-sheets' %}
+            {% assign fi_product = all_products['zip-fit-sheets'] %}
+            {% assign fi_product_var_sec = fi_product.selected_or_first_available_variant %}
+            <div class="variant-label_z upsells" data-comp="{{ fi_product_var_sec.compare_at_price }}" data-diff="{{ fi_product_var_sec.compare_at_price | minus : fi_product_var_sec.price }}" data-price ="{{ fi_product_var_sec.price }}">
+
+
+              <div class="disp-flex-rad">
+                <div class="chekbox">
+                  <label for="upsell_4_d">
+                    <input id="upsell_4_d" type="checkbox" name="upsell_4">
+                    <img data-swift-lazy="1" loading="lazy" class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
+                    <img data-swift-lazy="1" loading="lazy" class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
+                  </label>
+                </div>
+
+
+                <div class="right-box">
+                  <div class="prod-title-image">
+                    <div class="img-left">
+                      <img data-swift-lazy="1" loading="lazy" src="{{ fi_product.featured_image | img_url:'200x' }}">
+                    </div>
+                    <div class="title">
+                      <div>{{fi_product.title}}</div>
+                      <div>
+                        <span class="was-price">+{{ fi_product_var_sec.compare_at_price | money }}</span>
+                        <span class="price colorRose">+{{ fi_product_var_sec.price | money }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="desc">
+                    Zipfit Sheets fully encase your bed, ensuring they never slip off like regular fitted sheets.
+                  </div>
+
+                  <div class="box-select">
+                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                    <select class="inner-upsells" name="upsell_4">
+                      {% for variant in fi_product.variants %}
+                      <option data-comp_price="{{ variant.compare_at_price }}" data-price="{{ variant.price }}" value="{{ variant.id }}">{{ variant.title }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% endif %}
+
+          <div class="price-area">
+            <div class="disp-flex">
+              <label>Bundle Discount</label>
+              <label class="colorRose discounted_price-bundle">---</label>
+            </div>
+
+            <div class="disp-flex">
+              <strong>Your Total:</strong>
+              <div class="osdpo">
+                <strong class="total_price-bundle">
+                  {{ product.selected_or_first_available_variant.price | money }}
+                </strong>
+              </div>
+
+            </div>

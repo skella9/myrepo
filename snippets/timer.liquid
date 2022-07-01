@@ -1,0 +1,120 @@
+<style>
+  .timer-top {
+    text-align: center;
+    display: block;
+    padding: 15px;
+    background: #3b006f;
+    width: 100%;
+    z-index: 9999;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  #timerHere {
+    color: #fdd800;
+  }
+  #timerHere span {
+    margin-right: 7px;
+    font-size: 14px;
+    position: relative;
+  }
+  #timerHere span::after {
+    content: '|';
+    display: inline-block;
+  }
+  #timerHere span:last-child::after {
+
+    display:none;
+  }
+  #timerHere {
+    color: #fdd800;
+    max-width: 320px;
+    display: inline-block;
+  }
+
+  /* Usp bar */
+  .timer-bar {
+    /*display: none;*/
+  }
+  .usp-bar {
+    background: #000000;
+    display: none;
+  }
+  .fix-usp {  
+    z-index: 9999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .fix-body { 
+    /*margin-top: 50px;*/
+  }
+</style>
+<!-- <div class="timer-top timer-bar">
+  <div class="inner">
+    Presidents' Day Sale - 25% OFF Our most popular product (offer ends soon)
+  </div>
+</div> -->
+
+<div class="timer-top usp-bar">
+  <div class="inner">
+    <span class="content-usp-bar"></span>
+  </div>
+</div>
+
+<script>
+  /* USP bar */
+  let uspChange = [
+    'Free Easy Returns On All Orders',
+    'Free Shipping Over $125'
+  ],
+  i = 0;
+  setInterval(function(){
+    $('.content-usp-bar').fadeOut(function(){
+      $(this).html(uspChange[(i = (i + 1) % uspChange.length)]).fadeIn();
+    });
+  }, 3000);
+  let uspBar = $('.usp-bar');
+  let uspPos = uspBar.offset().top;
+  $(window).scroll(function () {
+    let fix = ($(this).scrollTop() > uspPos) ? true : false;
+    uspBar.toggleClass("fix-usp", fix);
+    $('body').toggleClass("fix-body", fix);
+  });
+
+  // Set the date we're counting down to
+  var countDownDate = new Date("December 15, 2021 11:00:00").getTime();
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    var elem = document.getElementById("timerHere"); 
+    //console.log(elem)
+    if(typeof elem !== 'undefined' && elem !== null) {
+      // Output the result in an element with id="demo"
+      document.getElementById("timerHere").innerHTML = '<span>'+days + " days </span><span>" + hours + " hours </span><span>"
+      + minutes + " mins </span><span>" + seconds + " secs </span>";
+
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("timerHere").innerHTML = "EXPIRED";
+      }
+    }
+  }, 1000);
+</script>

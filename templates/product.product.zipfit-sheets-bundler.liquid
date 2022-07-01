@@ -1,0 +1,546 @@
+<style>
+  .prodPrice{
+    /* display:none; */
+  }
+  .disp-flex.add-cart-qty {
+    align-items: end;
+  }
+  .disp-flex.add-cart-qty .prodSelect {
+    margin-right: 20px;
+  }
+  .disp-flex.add-cart-qty .qtyCounter {
+    height:55px;
+  }
+  .addToCart.btn.btnRose{
+    height: 55px;
+    line-height: inherit;
+  }
+  .btn.btn-add-cubs {
+    background: #3a006e;
+    height: 55px;
+    margin-bottom: 25px;
+    padding: 0px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: unset;
+    width: 100%;
+  }
+  form.cart-add {
+    max-width: 460px;
+  }
+  .shippint-img img {
+    width: 460px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 100%;
+  }
+  .variant-label {
+    display: block;
+    width: 100%;
+    border: 3px solid #e1e1f5;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    position: relative;
+  }
+  .var-img img {
+    max-width: 60px;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+  .var-title {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .price-area {
+    display: block;
+    font-size: 19px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e1e1f5;
+    border-top: 2px solid #e1e1f5;
+    padding-top: 20px;
+  }
+  .price-area .disp-flex {
+    justify-content: space-between;
+    margin-bottom: 13px;
+  }
+  .price-area .disp-flex:nth-child(2) {
+    margin-bottom: 0px;
+  }
+  #product_selector_popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 480px;
+    background: #f5f5fe;
+    padding: 20px;
+    z-index: 99999;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+
+  #product_selector_popup .variant-label{
+    margin-bottom: 10px;
+  }
+  .overlay {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+  }
+  #product_selector_popup .variant-label{
+    padding: 5px;
+  }
+  #product_selector_popup .var-img img {
+    max-width: 50px;
+  }
+  #product_selector_popup .delete-btn {
+    display: none;
+  }
+  .delete-btn {
+    position: absolute;
+    right: -40px;
+    max-width: 22px;
+    top: 22px;
+    cursor: pointer;
+  }
+  .sleepfection-gur {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .image-f {
+    width: 25%;
+  }
+  .text-r {
+    width: 70%;
+    padding-right: 30px;
+  }
+  .text-r h2 {
+    text-transform: uppercase;
+    font-size: 25px;
+    margin-bottom: 6px;
+  }
+  .image-f img {
+    max-width: 100%;
+  }
+  .opt-select label {
+    font-size: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #e0e2ef;
+    background: transparent;
+    background-color: transparent;
+  }
+  .opt-select {
+    margin-bottom: 30px;
+  }
+  .variant-label_z select {
+    width: 100%;
+    background: transparent;
+    border: 2px solid #e0e2ef;
+    padding: 22px;
+    border-radius: 5px;
+    font-size: 18px;
+    appearance: inherit;
+    -webkit-appearance: inherit;
+    -moz-appearance: inherit;
+  }
+  .box-select {
+    position: relative;
+  }
+  .drop-sym {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .option-values input[type=radio]:checked+label, .option-values label.selected, .option-values label:hover {
+    box-shadow: 0px 0px 0px 2px #3a006e;
+  }
+  .light-grey label {
+    background: #ebebeb !important;
+  }
+  .white label {
+    background: #fff !important;
+  }
+  .opt-select p {
+    padding-bottom: 10px;
+    font-weight: 700;
+    color: #3a006e;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  .disp-flex-rad {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .right-box img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .chekbox {
+    margin-right: 14px;
+  }
+  .prod-title-image {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+  }
+  .bedding-title {
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+  }
+  .img-left {
+    width: 35%;
+  }
+  .prod-title-image .title {
+    width: 60%;
+    font-size: 20px;
+  }
+  .price.colorRose {
+    font-weight: 700;
+  }
+  .desc {
+    margin-bottom: 20px;
+  }
+  .variant-label_z.upsells {
+    border: 2px solid #e0e2ef;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+  }
+  .selected-imag {
+    display: none;
+  }
+  .bundle-save span:first-child {
+    font-style: italic;
+  }
+  .bundle-save {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    color: #ff008b;
+    font-size: 16px;
+    align-items: center;
+  }
+  .bundle-save .save {
+    color: #fff;
+    background: #ff008b;
+    border-radius: 25px;
+    padding: 5px 10px;
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    line-height: initial;
+  }
+  .chekbox input:checked + img + img {
+    display: block;
+  }
+  .chekbox input:checked + img {
+    display: none;
+  }
+  .chekbox label {
+    cursor: pointer;
+  }
+  .chekbox img {
+    width: 35px;
+    height: auto;
+    text-align: left;
+  }
+  @media screen and (max-width: 767px) {
+    .disp-flex.add-cart-qty {
+      align-items: end;
+      flex-wrap: wrap;
+    }
+    .firs-variant-selected .variant-label{
+      max-width: 90%;
+    }
+    .image-f {
+
+      width: 22%;
+    }
+    .text-r {
+      width: 75%;
+      padding-right: 0;
+    }
+    .text-r h2 {
+      font-size: 16px;
+    }
+    .text-r p {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div class="oldProductPage">
+  <section class="breadcrumbBox">
+    <div class="container">
+      <ol class="breadcrumbLine flexBox noList">
+        <li><a href="{{product.url}}">Shop</a></li>
+        <li>{{product.title}}</li>
+      </ol>
+    </div>
+  </section>
+</div>
+
+<div class="prodDtls">
+  <div class="oldProductPage">
+    {% assign detail_type = 'Regular' %}
+    {% include 'product-details-zipfit' %}
+    {% include 'details-extra' %}
+      {% render 'faq-start', sectionOrder: 'bottom' %}
+  </div>
+</div>
+
+<script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+<script>
+  var klaviyo = klaviyo || [];
+  klaviyo.init({
+    account: "RFbNh3",
+    platform: "shopify"
+  });
+  klaviyo.enable("backinstock",{
+    trigger: {
+      product_page_text: "Notify Me When Available",
+      product_page_class: "btn",
+      product_page_text_align: "center",
+      product_page_margin: "0px",
+      replace_anchor: false
+    },
+    modal: {
+      headline: "{product_name}",
+      body_content: "Register to receive a notification when this item comes back in stock.",
+      email_field_label: "Email",
+      button_label: "Notify me when available",
+      subscription_success_label: "You're in! We'll let you know when it's back.",
+      footer_content: '',
+      additional_styles: "@import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');",
+      drop_background_color: "#000",
+      background_color: "#fff",
+      text_color: "#222",
+      button_text_color: "#fff",
+      button_background_color: "#439fdb",
+      close_button_color: "#ccc",
+      error_background_color: "#fcd6d7",
+      error_text_color: "#C72E2F",
+      success_background_color: "#d3efcd",
+      success_text_color: "#1B9500"
+    }
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $(document).on('click','.cart-add .variant-label',function(){
+      var image = $(this).attr('data-image_id');
+      $(document).find('a[data-imate_id="'+image+'"]').trigger('click');
+
+    });
+
+    $(document).on('click','.prGlThumb a',function(e){
+      e.preventDefault();
+      var image = $(this).attr('data-img');
+      $(document).find('.prGlMainImg img').attr('src',image);
+
+    });
+
+    $(document).on('click','.btn.btn-add-cubs',function(e){
+      $(document).find('.popup-with-overlay').fadeIn();
+    });
+
+    $(document).on('click','.overlay',function(e){
+      $(document).find('.popup-with-overlay').fadeOut();
+    });
+
+    function calculatePrice(){
+      var total = 0,
+          discount = 0,
+          comptotal = 0;
+          
+      var bundle_quantity = $('.cInput').val()
+      var i = 0
+      var removeDiscount = 0
+      $(document).find('.firs-variant-selected_z .variant-label_z').each(function(){
+        i = i + 1
+        if($(this).find('[type="checkbox"]').is(':checked') ){
+          var price = $(this).attr('data-price');
+              compPrice = $(this).attr('data-comp');
+          total = parseInt(price) + parseInt(total);
+          comptotal = parseInt(compPrice) + parseInt(comptotal);
+          if (i == 1) {
+            removeDiscount = compPrice - price
+            console.log(removeDiscount)
+          }
+        }
+      });
+      total = total*bundle_quantity
+      comptotal = comptotal*bundle_quantity
+      removeDiscount = removeDiscount*bundle_quantity
+      
+      var number_of_item = $(document).find('.firs-variant-selected .variant-label_z').length;
+
+      discount = 0;
+
+      //$(document).find('.prodPrice.flexBox.flexAic .was-price').text(Shopify.formatMoney(total,theme.moneyFormat) );
+
+      var discount_percen = (comptotal - total )* total/100 ;
+
+      var pending_amount = comptotal - total - removeDiscount;
+      console.log(pending_amount)
+      if (pending_amount == 0) {
+        $('.discounted_price-bundle').parents('.disp-flex').hide();
+      } else {
+        $('.discounted_price-bundle').parents('.disp-flex').show();
+      }
+
+      var formatted = Shopify.formatMoney(total,theme.moneyFormat);
+      //console.log(total+' '+pending_amount)
+      $(document).find('.total_price-bundle').text(formatted);
+
+      // $(document).find('.prodPrice .colorRose').text(formatted);
+
+      $(document).find('.discounted_price-bundle').text('-'+ Shopify.formatMoney(pending_amount,theme.moneyFormat) );
+
+      setTimeout(function(){
+        // $(document).find('.prodPrice').removeClass('hidden').show();
+      },1000)
+
+    }
+
+    
+    $('.cInput').on('DOMSubtreeModified', function() {
+      calculatePrice()
+    });
+
+    $(document).on('change','.firs-variant-selected_z .variant-label_z.upsells [type="checkbox"]',function(e){
+      setTimeout(function(){
+        calculatePrice();
+      },500)
+    });
+
+    $(document).on('click','#product_selector_popup .variant-label',function(e){
+      var html = $(this).clone();
+      $(document).find('.firs-variant-selected').append(html);
+
+      $(document).find('.popup-with-overlay').fadeOut();
+
+      setTimeout(function(){
+        calculatePrice();
+      },500)
+    });
+
+    $(document).on('click','.firs-variant-selected .delete-btn',function(e){
+      $(this).closest('.variant-label').remove();
+      setTimeout(function(){
+        calculatePrice();
+      },500)
+    });
+
+    $(document).on('click','[name="add"]',function(e){
+      e.preventDefault();
+      var quantity = $(document).find('[name="quantity"]').val(),
+          main_var = $(document).find('[data-main-var] [name="id"]:checked').val();
+      let items = [ {id: main_var,
+                     quantity: quantity }];
+
+      $(document).find('.firs-variant-selected_z .variant-label_z').each(function(){
+        if($(this).hasClass('upsells') && $(this).find('[type="checkbox"]').is(':checked') ){
+          var variant = $(this).find('select').val();
+          items.push({
+            id: variant,
+            quantity: quantity
+          })
+        }
+      });
+      callCartDrawer({items});
+
+    });
+
+
+    function changeOptions(variant){
+      $(document).find('[data-title="'+variant+'"]').trigger('click');
+      var price = $(document).find('[data-title="'+variant+'"]').attr('data-price'),
+          compprice = $(document).find('[data-title="'+variant+'"]').attr('data-cprice'),
+          id = $(document).find('[data-title="'+variant+'"]').val();
+
+
+      $(document).find('.main-option-var').attr('data-price',price);
+      $(document).find('.main-option-var').attr('data-comp',compprice);
+      if(id !== undefined){
+        updateHistoryState(id)
+      }
+      setTimeout(function(){
+        calculatePrice();
+        var price = $(document).find('[data-main-var] input:checked').attr('data-price'),
+            cprice = $(document).find('[data-main-var] input:checked').attr('data-cprice');
+        $(document).find('.prodPrice.flexBox.flexAic .was-price').text(Shopify.formatMoney(cprice,theme.moneyFormat) );
+        $(document).find('.prodPrice .colorRose').text( Shopify.formatMoney(price,theme.moneyFormat) );
+      },500)
+
+
+    }
+    $(document).on('change','[name="option1"],[name="option2"]',function(){
+      var opt1 = $(document).find('[name="option1"]').val(),
+          opt2 = $(document).find('[name="option2"]:checked').val();
+      if(opt2 !== undefined){
+        var variant = opt1+' / '+opt2;
+      }else{
+        var variant = opt1;
+      }
+
+      changeOptions(variant);
+    });
+
+    $(document).on('change','.inner-upsells',function(){
+      var price = $(this).find('option:selected').attr('data-price'),
+          compPrice = $(this).find('option:selected').attr('data-comp_price');
+      checkUpsellPrices(price,compPrice,$(this).closest('.variant-label_z'))
+    });
+
+    function checkUpsellPrices(price,compPrice,parent){
+      $(parent).attr('data-price',price);
+      $(parent).attr('data-comp',compPrice);
+
+      $(parent).find('.price').text('+'+Shopify.formatMoney(price,theme.moneyFormat));
+      $(parent).find('.was-price').text(Shopify.formatMoney(compPrice,theme.moneyFormat));
+
+      setTimeout(function(){
+        calculatePrice();
+      },500)
+    }
+
+    $(document).find('.firs-variant-selected_z .variant-label_z').each(function(){
+      if( $(this).hasClass('upsells') ){
+        var price = $(this).find('select.inner-upsells option:selected').attr('data-price'),
+          compPrice = $(this).find('select.inner-upsells option:selected').attr('data-comp_price');
+        checkUpsellPrices(price,compPrice, $(this));
+      }
+    });
+    setTimeout(function(){
+      calculatePrice();
+    });
+
+    setTimeout(function(){
+      var length = $(document).find('[name="option1"] [value="Pro - 5 Inch - 12x24"]').length;
+      console.log( 'length ->' + length );
+      if(length > 0 ){
+      	$(document).find('[name="option1"]').val('Pro - 5 Inch - 12x24').trigger('change');
+      }
+    },2000);
+
+  });
+</script>

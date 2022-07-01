@@ -1,0 +1,261 @@
+<script>
+$( document ).ready(function() {
+    var screen = $(window).width()
+    function stickyInitialize (screen) {
+        {% if product.handle == 'pillow-cube-pro' %}
+            var hT = $('#add-to-cart-btn').offset().top,
+            hH = $('#add-to-cart-btn').outerHeight(),
+        {% else %}
+            var hT = $('.addToCart').offset().top,
+            hH = $('.addToCart').outerHeight(),
+        {% endif %}
+        wH = $(window).height()
+        if (screen < 768) {
+            wS = $(this).scrollTop()-895;
+        } else {
+            wS = $(this).scrollTop()-765;
+        }
+        if (wS < (hT+hH-wH)){
+            $('#sticky-atc-bar').addClass("fade-out").removeClass("fade-in");
+            $('iframe#launcher').removeClass("sticky-helpdesk");
+            
+        } else {
+            $('#sticky-atc-bar').addClass("fade-in").removeClass("fade-out");
+            $('iframe#launcher').addClass("sticky-helpdesk");
+        }
+    }
+
+    $(window).scroll(function() {
+        stickyInitialize(screen);
+    });
+
+    stickyInitialize(screen);
+});
+</script>
+
+<style>
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.5s;
+}
+.fade-out {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+</style>
+
+<header class="header headerBg sticky-atc-bar fade-out" id="sticky-atc-bar"  >
+    <nav class="navbar originalNav {% if is_landing %}zIndexIssue {% endif %}">
+        <div class="container flexBox flexJcb flexAic">
+                
+            <div class="prodQty">
+                <p>QUANTITY</p>
+                <div class="qtyCounter flexBox flexAic quantity-counter">
+                    <button class="cMinus" type="button">
+                        <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/minus.svg?v=1615505202" alt="">
+                    </button>
+                    <input id="atcInput" name="quantity" class="cInput" type="number" min="1" max="100" value="1">
+                    <button class="cPlus" type="button">
+                        <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.svg?v=1615505202" alt="">
+                    </button>
+                </div>
+            </div>
+            
+            {% if product.handle == 'side-sleeper-pro' %}
+                <script>
+                    function stickyATC () {
+                        document.getElementById("add-to-cart-btn").click();
+                    }
+                    
+                    $( document ).ready(function() {
+                        var upsellIce = 0                        
+                        if ($('#ice_addon').is(":checked")) {
+                            upsellIce = 3000;
+                        } else {
+                            upsellIce = 0
+                        }
+
+                        var pillowPrice = {{ product.selected_or_first_available_variant.price }}
+
+                        var priceStrip = /(\d+(?:\.\d{1,2})?)/
+                        var casePrice = 0            
+                        casePrice = $('.mainot').text();
+                        casePrice = priceStrip.exec(casePrice);
+                        casePrice = parseInt(casePrice[0]*100);
+
+                        var productQty = parseInt($('.cInput').val())
+
+                        //turn into price function later
+                        var priceATC = 0
+
+                        $('#ice_addon').change(function(){
+                            if ($('#ice_addon').is(":checked")) {
+                                upsellIce = 3000;
+                            } else {
+                                upsellIce = 0
+                            }
+                            priceATC = productQty*(upsellIce + pillowPrice + casePrice)
+                            priceATC = "$"+priceATC/100
+                            $("#priceATC").text(priceATC);
+                        });
+                        $('.titit').on('DOMSubtreeModified', function(){            
+                            casePrice = $('.titit').text();
+                            casePrice = priceStrip.exec(casePrice);
+                            if (casePrice == null) {
+                                casePrice = 0
+                            } else {
+                                casePrice = parseInt(casePrice[0]*100);
+                            }
+                            priceATC = productQty*(upsellIce + pillowPrice + casePrice)
+                            priceATC = "$"+priceATC/100
+                            $("#priceATC").text(priceATC);
+                        });
+
+                        $('.cInput').on('DOMSubtreeModified', function() {
+                            productQty = parseInt($('.cInput').first().text())
+                            priceATC = productQty*(upsellIce + pillowPrice + casePrice)
+                            priceATC = "$"+priceATC/100
+                            $("#priceATC").text(priceATC);
+                        });
+
+                        priceATC = productQty*(upsellIce + pillowPrice + casePrice)
+                        priceATC = "$"+priceATC/100
+                        $("#priceATC").text(priceATC);
+                    });
+                </script>
+                
+                <div class="with-qty-btn">
+                    <button class="btn btnRose" 
+                        data-sold="Sold Out" 
+                        data-adding="Adding.. Please Wait"
+                        onclick="stickyATC()"
+                    >
+                        ADD TO CART<span class="priceDash"> - </span><span id="priceATC"></span>
+                    </button>
+                </div>
+            {% elsif product.handle == 'cube'  %}
+                <script>
+                    function stickyATC () {
+                        document.getElementsByClassName("addToCart")[0].click()
+                    }
+                    $( document ).ready(function() {
+                        var upsellIce = 0
+                        if ($('#ice_addon').is(":checked")) {
+                            upsellIce = 3750;
+                        } else {
+                            upsellIce = 0
+                        };
+
+                        var pillowPrice = {{ product.price }}
+                        var productQty = parseInt($('.cInput').val())
+                        var priceATC = 0
+
+                        function finalPrice (productQty, upsellIce, pillowPrice) {
+                            var priceATC = "$" + (productQty*(upsellIce+pillowPrice)/100)
+                            $("#priceATC").text(priceATC);
+                        }
+
+                        $('#ice_addon').change(function(){
+                            if ($('#ice_addon').is(":checked")) {
+                                upsellIce = 3750;
+                            } else {
+                                upsellIce = 0
+                            }
+                            finalPrice(productQty, upsellIce, pillowPrice)
+                        });
+
+                        $('.cInput').on('DOMSubtreeModified', function() {
+                            productQty = parseInt($('.cInput').first().text())
+                            finalPrice(productQty, upsellIce, pillowPrice)
+                        });
+
+                        finalPrice(productQty, upsellIce, pillowPrice)
+                    });
+                </script>
+
+                    <div class="with-qty-btn">
+                        <button class="btn btnRose" 
+                            onclick="stickyATC()"
+                        >
+                            ADD TO CART - <span id="priceATC">{{ product.price }}</span>
+                        </button>
+                    </div>
+            {% else %}
+                <script>
+                function stickyATC () {
+                    document.getElementsByClassName("addToCart")[0].click()
+                }
+                $( document ).ready(function() {
+                    var itemPrice = $('.total_price-bundle').text();
+                    function totalCalculator(price) {
+                        if (price) {
+                            return price
+                        } else {
+                            return ({{product.price}}/100)
+                        }
+                    }
+                    function priceInput (bundlePrice, atcQty) {          
+                        var priceTest = /\d/
+                        var price = bundlePrice * atcQty
+                        if ( priceTest.test(price) ) {
+                            var priceATC = "$"+(price)
+                            $("#priceATC").text(priceATC);
+                        } else {
+                            return null
+                        }
+                    }
+
+                    var totalBundle = totalCalculator(itemPrice);
+                    var productQty = parseInt($('.cInput').val())
+                    if (itemPrice) {
+                        $('.total_price-bundle').on('DOMSubtreeModified', function(){
+                            $("#priceATC").text($('.total_price-bundle').text());
+                        });
+    
+                        $('.cInput').on('DOMSubtreeModified', function() {
+                            $("#priceATC").text($('.total_price-bundle').text());
+                        });
+                        $("#priceATC").text($('.total_price-bundle').text());
+                    } else {
+                        $('.total_price-bundle').on('DOMSubtreeModified', function(){
+                            totalBundle = totalCalculator();
+                            priceInput (totalBundle, productQty)
+                        });
+    
+                        $('.cInput').on('DOMSubtreeModified', function() {
+                            productQty = parseInt($('.cInput').first().text())
+                            priceInput (totalBundle, productQty)
+                        });
+                        priceInput (totalBundle, productQty) 
+                    }
+
+                    
+                });
+                </script>
+
+                <div class="with-qty-btn">
+                    <button class="btn btnRose" 
+                        onclick="stickyATC()"
+                    >
+                      ADD TO CART<span class="priceDash"> - </span><span id="priceATC"></span>
+                    </button>
+                </div>
+            {% endif %}
+
+           
+        </div>
+    </nav>
+</header>
