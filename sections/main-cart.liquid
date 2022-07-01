@@ -24,12 +24,12 @@
 
               <li class="cart-item-container">
                 <a class="cart-mobile-image" href="{{ item.url }}">
-                  <img data-swift-lazy="1" loading="lazy" class="global-border-radius" src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}">
+                  <img class="global-border-radius" src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}">
                 </a>
                 <div class="cart-item flex">
                     {% if item.image != blank %}
                       <a class="image" href="{{ item.url }}">
-                        <img data-swift-lazy="1" loading="lazy" class="global-border-radius" src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}">
+                        <img class="global-border-radius" src="{{ item | img_url: '400x' }}" alt="{{ item.title | escape }}">
                       </a>
                     {% endif %}
                   <div class="description">
@@ -53,7 +53,7 @@
 {% assign file_type = p.last | split: '.' | last | downcase %}
 {% assign file_types = 'jpg,jpeg,webp,gif,png,apng,avif,svg,bmp,ico,tiff' | split: ',' %}
 {% if file_types contains file_type %}
-  <div class="bcpo-cart-file"><img data-swift-lazy="1" loading="lazy" src="{{ p.last }}" style="max-width: 50px; height: auto;"></div>
+  <div class="bcpo-cart-file"><img src="{{ p.last }}" style="max-width: 50px; height: auto;"></div>
 {% else %}
   <span class="bcpo-cart-file">Uploaded file</span>
 {% endif %}

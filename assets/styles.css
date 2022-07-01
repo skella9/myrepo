@@ -396,8 +396,6 @@
 
   */
   /*
-  
-  /* All code has been authored and written by Raquel Roman rockiey2kai@gmail.com */
 
   1. Buttons
 
@@ -445,7 +443,7 @@
   .pswp__button,
   .pswp__button--arrow--left:before,
   .pswp__button--arrow--right:before {
-    background: url(//cdn.shopify.com/s/files/1/0056/8439/6096/t/209/assets/photoswipe-default-skin.png?v=115405504031309184941653954488) 0 0 no-repeat;
+    background: url(//cdn.shopify.com/s/files/1/0056/8439/6096/t/215/assets/photoswipe-default-skin.png?v=115405504031309184941656355328) 0 0 no-repeat;
     background-size: 264px 88px;
     width: 44px;
     height: 44px;
@@ -456,7 +454,7 @@
     .pswp--svg .pswp__button,
     .pswp--svg .pswp__button--arrow--left:before,
     .pswp--svg .pswp__button--arrow--right:before {
-      background-image: url(//cdn.shopify.com/s/files/1/0056/8439/6096/t/209/assets/photoswipe-default-skin.svg?v=153845424322445325761653954488);
+      background-image: url(//cdn.shopify.com/s/files/1/0056/8439/6096/t/215/assets/photoswipe-default-skin.svg?v=153845424322445325761656355329);
     }
 
     .pswp--svg .pswp__button--arrow--left,
@@ -762,7 +760,7 @@
 
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0056/8439/6096/t/209/assets/preloader.gif?v=77008736554601496081653954489) 0 0 no-repeat;
+    background: url('https://cdn.shopify.com/s/files/1/0056/8439/6096/files/preloader.gif?v=1656402890') 0 0 no-repeat;
   }
 
   .pswp--css_animation .pswp__preloader--active {
@@ -1062,7 +1060,7 @@
 
   /* Slider */
   .slick-loading .slick-list {
-    background: #fff url(//cdn.shopify.com/s/files/1/0056/8439/6096/t/209/assets/preloader.gif?v=77008736554601496081653954489) center center no-repeat;
+    background: #fff url('https://cdn.shopify.com/s/files/1/0056/8439/6096/files/preloader.gif?v=1656402890') center center no-repeat;
   }
 
   /* Arrows */
@@ -1279,7 +1277,7 @@
     box-sizing: content-box;
   }
 
-  /** 
+  /**
   * Label must come directly after input and be a separate element (not wrapped around input)
   *
   * Checkbox example
@@ -2303,7 +2301,6 @@
     }
   }
   /*================ GENERIC ================*/
-  /* All code has been authored and written by Raquel Roman rockiey2kai@gmail.com */
   /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
   /* Document
   ========================================================================== */
@@ -2524,7 +2521,7 @@
     overflow: hidden;
   }
 
-  /* Forms   /* All code has been authored and written by Raquel Roman rockiey2kai@gmail.com */
+  /* Forms
   ========================================================================== */
   /**
   * 1. Change the font styles in all browsers (opinionated).
@@ -2732,7 +2729,6 @@
   [hidden] {
     display: none;
   }
-  /* All code has been authored and written by Raquel Roman rockiey2kai@gmail.com */
 
   /*================ Slate specific reset ================*/
   *,
@@ -2916,11 +2912,9 @@
   }
 
   /*============================================================================
-  Grid 
+  Grid
   - Based on CSS Wizardry grid
   ==============================================================================*/
-    /* All code has been authored and written by Raquel Roman rockiey2kai@gmail.com */
-
   .grid,
   .grid-no-gutter {
     *zoom: 1;

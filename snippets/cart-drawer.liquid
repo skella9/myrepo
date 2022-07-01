@@ -17,7 +17,7 @@
 <div class="shipping-protection-container inner-body fdc bottom-border"  {% if cart.item_count == 0 %}style="display: none"{% endif %}>
     <div class="cart-item-container dif jcb aic r">
             <a href="#" class="thumb-link">
-              <img data-swift-lazy="1" loading="lazy" src="{{ shipping_product.featured_image | img_url: '80x' }}" width="80" alt="">
+              <img src="{{ shipping_product.featured_image | img_url: '80x' }}" width="80" alt="">
             </a>
             <div class="item-body dif fdc">
               <div class="title-area dif jcb">
@@ -58,7 +58,7 @@
       {% for line_item in cart.items %}
         <div class="cart-item-container dif jcb aic bottom-border">
           <a href="{{line_item.url}}" class="thumb-link">
-            <img data-swift-lazy="1" loading="lazy" src="{{line_item.image | product_img_url: '1920x'}}" width="80" alt="">
+            <img src="{{line_item.image | product_img_url: '1920x'}}" width="80" alt="">
           </a>
           <div class="item-body dif fdc">
             <div class="title-area dif jcb">

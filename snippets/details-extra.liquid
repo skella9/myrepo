@@ -15,7 +15,7 @@
       {% assign rproduct = all_products[handle] %}
       {% if rproduct.handle != product.handle %}
       <div class="rlPrCard">
-        <div class=""><img data-swift-lazy="1" loading="lazy" src="{{ rproduct.featured_image | img_url : '250x' }}" alt="" /></div>
+        <div class=""><img src="{{ rproduct.featured_image | img_url : '250x' }}" alt="" /></div>
         <div class="flexBox flexColumn flexJcb">
           <div class="rlPrCardTxt">
             {% if rproduct.metafields.my_fields.related_product_title != blank %}
@@ -55,7 +55,7 @@
 
       {% if product.handle == 'cube' %}
       <div class="rlPrCard">
-        <div class=""><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/propro.jpg?v=1618509925" alt="" /></div>
+        <div class=""><img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/propro.jpg?v=1618509925" alt="" /></div>
         <div class="flexBox flexColumn flexJcb">
           <div class="rlPrCardTxt">
             <h5>Side Sleeper PRO</h5>
@@ -70,7 +70,7 @@
 
       {% if product.handle == 'pillow-cube-pro' or product.handle == 'side-sleeper-pro' %}
       <div class="rlPrCard">
-        <div class=""><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/classic.jpg?v=1618509830" alt="" /></div>
+        <div class=""><img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/classic.jpg?v=1618509830" alt="" /></div>
         <div class="flexBox flexColumn flexJcb">
           <div class="rlPrCardTxt">
             <h5>Pillow Cube Classic</h5>
@@ -96,7 +96,7 @@
       {% for rproduct in cubs_coll.products %}
       {% if rproduct.handle != product.handle %}
       <div class="rlPrCard {% if cubs_coll.products_count > 3 %}colgd4{% endif %}">
-        <div class=""><img data-swift-lazy="1" loading="lazy" src="{{ rproduct.featured_image | img_url : '250x' }}" alt="" /></div>
+        <div class=""><img src="{{ rproduct.featured_image | img_url : '250x' }}" alt="" /></div>
         <div class="flexBox flexColumn flexJcb">
           <div class="rlPrCardTxt">
             <h5>{{rproduct.title}}</h5>
@@ -115,7 +115,7 @@
       {% else %}
 
       <div class="rlPrCard">
-        <div class=""><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pillow_cases_header_image.jpg?v=1640041722" alt="" /></div>
+        <div class=""><img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pillow_cases_header_image.jpg?v=1640041722" alt="" /></div>
         <div class="flexBox flexColumn flexJcb">
           <div class="rlPrCardTxt">
             <h5>Pillowcases</h5>
@@ -143,7 +143,7 @@
     {% if product.handle == 'pillow-cube-pro' or product.handle == 'side-sleeper-pro' %}
     <div class="pro-bottom-section">
       <div class="col1">
-        <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Pro3-min_1920x_rounded.png?v=1637042886">
+        <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/Pro3-min_1920x_rounded.png?v=1637042886">
       </div>
       <div class="col2">
         <p>Pillows aren't created equal. There are many styles available online and before starting this looooong project we tested them all.</p>
@@ -180,7 +180,7 @@
               <div class="videoLink">
 
                 <div class="youtube-video-place embed-responsive embed-responsive-4by3 " data-yt-url="https://www.youtube.com/embed/MF4c6nq_VEM?rel=0&showinfo=0&autoplay=1&enablejsapi=1">
-                  <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pillow-pre.png?v=1626164786" async class="play-youtube-video">
+                  <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pillow-pre.png?v=1626164786" async class="play-youtube-video">
                 </div>
 
                 {% comment %}
@@ -200,7 +200,7 @@
               <div class="videoLink">
 
                 <div class="youtube-video-place embed-responsive embed-responsive-4by3 " data-yt-url="https://www.youtube.com/embed/cYj-oTTjD-0?rel=0&showinfo=0&autoplay=1&enablejsapi=1">
-                  <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pre-2.png?v=1626164971" async class="play-youtube-video">
+                  <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/pre-2.png?v=1626164971" async class="play-youtube-video">
                 </div>
                 {% comment %}
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/cYj-oTTjD-0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

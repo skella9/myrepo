@@ -53,7 +53,7 @@
                     style="background-position: {{ block.settings.image_position }}">
                   <div class="rimage-wrapper" style="padding-top:{{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%">
                     <noscript>
-                      <img data-swift-lazy="1" loading="lazy" src="{{ section.settings.image | img_url: '1024x1024' }}" alt="{{ section.settings.image.alt | escape }}" class="rimage__image">
+                      <img src="{{ section.settings.image | img_url: '1024x1024' }}" alt="{{ section.settings.image.alt | escape }}" class="rimage__image">
                     </noscript>
                   </div>
                 </div>

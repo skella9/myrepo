@@ -57,7 +57,7 @@
         </div>
         <div class="right-bc">
           <div class="icon-image">
-            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/thickk.png?v=1631074140">
+            <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/thickk.png?v=1631074140">
           </div>
           <div class="_prodSizeInfo" >
             <h5>Select this if you're:</h5>
@@ -204,8 +204,6 @@
   $(document).on('change','.main_variant',function(){
     var value = $(this).val();
     $(document).find('[data-option="option2"] input[value="'+value+'"] + label').trigger('click');
-
-    $(document).find('[data-option="option2"] input[value="'+value+'"]').trigger('click');
 
     $(document).find('.radios.main-form-radios > div label').removeClass('selected');
 

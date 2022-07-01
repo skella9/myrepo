@@ -5,7 +5,7 @@
       <div class="prodGall">
         <div class="scroll-g">
           <div class="prGlMainImg" >
-            <img data-swift-lazy="1" loading="lazy" src="{{product.images[0].src | img_url: '1920x'}}" alt="{{product.title}}" />
+            <img src="{{product.images[0].src | img_url: '1920x'}}" alt="{{product.title}}" />
           </div>
 
 
@@ -14,7 +14,7 @@
             <div class="prGlImgRow">
               {% for image in product.images %}
               <div class="prGlThumb">
-                <a data-imate_id="{{ image.id }}" data-img='{{image.src | img_url: '1920x'}}'><img data-swift-lazy="1" loading="lazy" src="{{image.src | img_url: '100x'}}" alt="" /></a>
+                <a data-imate_id="{{ image.id }}" data-img='{{image.src | img_url: '1920x'}}'><img src="{{image.src | img_url: '100x'}}" alt="" /></a>
               </div>
               {% endfor %}
             </div>
@@ -23,7 +23,7 @@
 
           <div class="sleepfection-gur">
             <div class="image-f">
-              <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/gur.png?v=1634332137">
+              <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/gur.png?v=1634332137">
             </div>
             <div class="text-r">
               <h2>Sleepisfaction guarantee</h2>
@@ -119,7 +119,7 @@
 
                 <p>Select your {{ option.name  }}</p>
                 <div class="box-select">
-                  <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                  <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
                   <select name="{{ optname }}">
                     {% for value in option.values %}
                     <option  {% if product.handle == 'ice-cube-cooling-pillow' %} {% if value == 'Pro - 5 Inch - 12x24' %} selected {% endif %} {% else %} {% if selected_var[optname] == value %}selected{% endif %} {% endif %} value="{{ value }}">{{ value }}</option>
@@ -145,8 +145,8 @@
                 <div class="chekbox">
                   <label for="upsell_1_d">
                     <input id="upsell_1_d" type="checkbox" name="upsell_1">
-                    <img data-swift-lazy="1" loading="lazy" class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
-                    <img data-swift-lazy="1" loading="lazy" class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
+                    <img class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
+                    <img class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
                   </label>
                 </div>
 
@@ -154,7 +154,7 @@
                 <div class="right-box">
                   <div class="prod-title-image">
                     <div class="img-left">
-                      <img data-swift-lazy="1" loading="lazy" src="{{ second_product.featured_image | img_url:'200x' }}">
+                      <img src="{{ second_product.featured_image | img_url:'200x' }}">
                     </div>
                     <div class="title">
                       <div>{{second_product.title}}</div>
@@ -166,7 +166,7 @@
                   </div>
                   <div class="desc">Made with Frozen Fibers our Ice Cube Side Sleeper Pillow will keep you cool all night long.</div>
                   <div class="box-select">
-                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                    <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
                     <select class="inner-upsells" name="upsell_1">
                       {% for variant in second_product.variants %}
                       <option data-comp_price="{{ variant.compare_at_price }}" data-price="{{ variant.price }}" value="{{ variant.id }}">{{ variant.title }}</option>
@@ -189,8 +189,8 @@
                 <div class="chekbox">
                   <label for="upsell_2_d">
                     <input id="upsell_2_d" type="checkbox" name="upsell_2">
-                    <img data-swift-lazy="1" loading="lazy" class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
-                    <img data-swift-lazy="1" loading="lazy" class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
+                    <img class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
+                    <img class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
                   </label>
                 </div>
 
@@ -198,7 +198,7 @@
                 <div class="right-box">
                   <div class="prod-title-image">
                     <div class="img-left">
-                      <img data-swift-lazy="1" loading="lazy" src="{{ third_product.featured_image | img_url:'200x' }}">
+                      <img src="{{ third_product.featured_image | img_url:'200x' }}">
                     </div>
                     <div class="title">
                       <div>{{third_product.title}}</div>
@@ -213,7 +213,7 @@
                   </div>
 
                   <div class="box-select">
-                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                    <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
                     <select class="inner-upsells" name="upsell_2">
                       {% for variant in third_product.variants %}
                       <option data-comp_price="{{ variant.compare_at_price }}" data-price="{{ variant.price }}" value="{{ variant.id }}">{{ variant.title }}</option>
@@ -236,8 +236,8 @@
                 <div class="chekbox">
                   <label for="upsell_3_d">
                     <input id="upsell_3_d" type="checkbox" name="upsell_3">
-                    <img data-swift-lazy="1" loading="lazy" class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
-                    <img data-swift-lazy="1" loading="lazy" class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
+                    <img class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
+                    <img class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
                   </label>
                 </div>
 
@@ -245,7 +245,7 @@
                 <div class="right-box">
                   <div class="prod-title-image">
                     <div class="img-left">
-                      <img data-swift-lazy="1" loading="lazy" src="{{ f_product.featured_image | img_url:'200x' }}">
+                      <img src="{{ f_product.featured_image | img_url:'200x' }}">
                     </div>
                     <div class="title">
                       <div>{{f_product.title}}</div>
@@ -260,7 +260,7 @@
                   </div>
 
                   <div class="box-select">
-                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                    <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
                     <select class="inner-upsells" name="upsell_3">
                       {% for variant in f_product.variants %}
                       <option data-comp_price="{{ variant.compare_at_price }}" data-price="{{ variant.price }}" value="{{ variant.id }}">{{ variant.title }}</option>
@@ -283,8 +283,8 @@
                 <div class="chekbox">
                   <label for="upsell_4_d">
                     <input id="upsell_4_d" type="checkbox" name="upsell_4">
-                    <img data-swift-lazy="1" loading="lazy" class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
-                    <img data-swift-lazy="1" loading="lazy" class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
+                    <img class="plus-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.png?v=1634337362">
+                    <img class="selected-imag" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/checked.png?v=1634337362">
                   </label>
                 </div>
 
@@ -292,7 +292,7 @@
                 <div class="right-box">
                   <div class="prod-title-image">
                     <div class="img-left">
-                      <img data-swift-lazy="1" loading="lazy" src="{{ fi_product.featured_image | img_url:'200x' }}">
+                      <img src="{{ fi_product.featured_image | img_url:'200x' }}">
                     </div>
                     <div class="title">
                       <div>{{fi_product.title}}</div>
@@ -307,7 +307,7 @@
                   </div>
 
                   <div class="box-select">
-                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
+                    <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046" class="drop-sym">
                     <select class="inner-upsells" name="upsell_4">
                       {% for variant in fi_product.variants %}
                       <option data-comp_price="{{ variant.compare_at_price }}" data-price="{{ variant.price }}" value="{{ variant.id }}">{{ variant.title }}</option>
@@ -348,11 +348,11 @@
                 <p>QUANTITY</p>
                 <div class="qtyCounter flexBox flexAic">
                   <button class="cMinus" type="button" >
-                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/minus.svg?v=1615505202" alt="" />
+                    <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/minus.svg?v=1615505202" alt="" />
                   </button>
                   <input class="cInput" name="quantity" type="number" min="1" max="100" value="1"  />
                   <button class="cPlus" type="button" >
-                    <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.svg?v=1615505202" alt="" />
+                    <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/plus.svg?v=1615505202" alt="" />
                   </button>
                 </div>
               </div>
@@ -373,13 +373,13 @@
 
         <div class="prodPymtOp">
           <div class="prodPyType">
-            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentAmazon.svg?v=1615505202" alt="" />
-            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentVisa.svg?v=1615505202" alt="" />
-            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentMastercard.svg?v=1615505202" alt="" />
-            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentPayPal.svg?v=1615505202" alt="" />
-            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentDiscover.svg?v=1615505202" alt="" />
-            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentApplePay.svg?v=1615505202" alt="" />
-            <img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentShopPay.svg?v=1615505202" alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentAmazon.svg?v=1615505202" alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentVisa.svg?v=1615505202" alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentMastercard.svg?v=1615505202" alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentPayPal.svg?v=1615505202" alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentDiscover.svg?v=1615505202" alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentApplePay.svg?v=1615505202" alt="" />
+            <img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/paymentShopPay.svg?v=1615505202" alt="" />
           </div>
 
         </div>

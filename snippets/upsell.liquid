@@ -79,11 +79,11 @@
         {% for prodP in upsellcoll.products %}
         {% for variant in prodP.variants %}
         {% if variant.id == 37116399517854 %}
-        <span class="img" style="display:block"><img data-swift-lazy="1" loading="lazy" src="{{ prodP.images[0] | img_url : '100x' }}"></span><span class="titit">{{ prodP.title }} - {{ variant.price | money }}</span>
+        <span class="img" style="display:block"><img src="{{ prodP.images[0] | img_url : '100x' }}"></span><span class="titit">{{ prodP.title }} - {{ variant.price | money }}</span>
         {% endif %}
         {% endfor %}
         {% endfor %}
-        <span><span class="arrow-down"><img data-swift-lazy="1" loading="lazy" src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046"></span></span></div>
+        <span><span class="arrow-down"><img src="https://cdn.shopify.com/s/files/1/0056/8439/6096/files/dropdown.png?v=1634335046"></span></span></div>
     </div>
     <ul class="pillowcase_upsell" >
       {% for prodP in upsellcoll.products %}
@@ -93,7 +93,7 @@
       <li data-variant="{{ variant.id }}" data-title="{{ variant.title }}" > 
         <label for="pillocase_upsell_{{ variant.id }}">
           <input {% if variant.id == 37116399517854 %}checked{% endif %} id="pillocase_upsell_{{ variant.id }}" type="radio" name="pillowcase_option" value="{{ variant.id }}">
-          <img data-swift-lazy="1" loading="lazy" src="{{ prodP.images[0] | img_url : '100x' }}"> 
+          <img src="{{ prodP.images[0] | img_url : '100x' }}"> 
           <span class="pro-title">{{ prodP.title }} - {{ variant.price | money }}</span>
         </label>
       </li>
@@ -125,7 +125,7 @@
           img = $(parent).find('img').attr('src'),
           prodtitle = $(parent).find('.pro-title').text();
       if(value != 'none'){
-        $(gp).find('.mainot .img').html('<img data-swift-lazy="1" loading="lazy" src="'+img+'">').show();
+        $(gp).find('.mainot .img').html('<img src="'+img+'">').show();
         $(gp).find('.mainot .titit').html(prodtitle);
       }else{
         $(gp).find('.mainot .img').html('').hide();

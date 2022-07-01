@@ -9,12 +9,12 @@
 <div class="rimage-outer-wrapper" {% unless nomax %}style="max-width: {{ image.width }}px; max-height: {{ image.width | divided_by: aspect_ratio }}px"{% endunless %}>
   <div class="rimage-wrapper lazyload--placeholder" style="padding-top:{{ 1 | divided_by: aspect_ratio | times: 100 }}%">
     {% if initial %}
-      <img data-swift-lazy="1" loading="lazy" class="rimage__image lazyload fade-in {% if cover %}cover{% endif %}" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'/%3E" data-src="{{ image | img_url: initial }}">
+      <img class="rimage__image lazyload fade-in {% if cover %}cover{% endif %}" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'/%3E" data-src="{{ image | img_url: initial }}">
       {% assign initial = false %}
     {% endif %}
     {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
     {% unless noimgtag %}
-      <img data-swift-lazy="1" loading="lazy" class="rimage__image lazyload fade-in {% if cover %}cover{% endif %}"
+      <img class="rimage__image lazyload fade-in {% if cover %}cover{% endif %}"
       src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'/%3E"
       data-src="{{ img_url }}"
       data-widths="[180, 220, 300, 360, 460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
@@ -26,7 +26,7 @@
 
     <noscript>
       {% assign img_url = image | img_url: '1024x1024' %}
-      <img data-swift-lazy="1" loading="lazy" src="{{ img_url }}" alt="{{ image.alt | escape }}" class="rimage__image">
+      <img src="{{ img_url }}" alt="{{ image.alt | escape }}" class="rimage__image">
     </noscript>
   </div>
 </div>

@@ -8,7 +8,7 @@
           data-parent-fit="cover">
         <noscript>
           {% assign image = alternative_image | default: collection.featured_image %}
-          <img data-swift-lazy="1" loading="lazy" src="{{ image | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}" class="rimage-background__image">
+          <img src="{{ image | img_url: '1024x1024' }}" alt="{{ image.alt | escape }}" class="rimage-background__image">
         </noscript>
       </a>
     {% endif %}

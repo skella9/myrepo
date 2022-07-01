@@ -17,7 +17,7 @@
   {% endif %}
 
   <div class="giftcard__illustration">
-  <img data-swift-lazy="1" loading="lazy" src="{{ 'gift-card/card.jpg' | shopify_asset_url }}" alt="Gift card illustration">
+  <img src="{{ 'gift-card/card.jpg' | shopify_asset_url }}" alt="Gift card illustration">
 
     {%- assign code_size = gift_card.code | format_code | size -%}
     <span id="gift-card-code-digits" class="giftcard__code">{{ gift_card.code | format_code }}</span>
@@ -48,7 +48,7 @@
   {% if gift_card.pass_url %}
     <div class="giftcard-apple-wallet">
       <a href="{{ gift_card.pass_url }}" class="apple-wallet">
-        <img data-swift-lazy="1" loading="lazy" class="apple-wallet-image" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}">
+        <img class="apple-wallet-image" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}">
       </a>
     </div>
   {% endif %}

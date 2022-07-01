@@ -29,7 +29,7 @@
             data-parent-fit="cover"
             style="background-position: {{ section.settings.image_position }}">
             <noscript>
-              <img data-swift-lazy="1" loading="lazy" src="{{ section_image | img_url: '1024x1024' }}" alt="{{ section_image.alt | escape }}" class="rimage-background__image">
+              <img src="{{ section_image | img_url: '1024x1024' }}" alt="{{ section_image.alt | escape }}" class="rimage-background__image">
             </noscript>
           </a>
 
