@@ -42,6 +42,7 @@
 
                       {%- unless media.media_type == 'image' -%}
                     </div>
+                    <!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
                     {%- else -%}
                   </a>
                   {%- endunless -%}
@@ -73,6 +74,7 @@
                 <div class="slick-dots"></div>
               </div>
             </div>
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
             {% if section.settings.media_layout contains 'thumbnails' and product.media.size > 1 %}
             <div class="product-detail__thumbnails">
@@ -98,6 +100,7 @@
             {% endif %}
           </div>
         </div>
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
         <div class="product-layout-grid__detail">
           <div class="product-detail__detail sticky-element">
@@ -105,6 +108,7 @@
             {%- case block.type -%}
             {%- when '@app' -%}
             {%- render block -%}
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
             {%- when 'title_and_price' -%}
             <div class="product-detail__title-area row" {{ block.shopify_attributes }}>
@@ -163,6 +167,7 @@
               </a>
             </div>
             {%- endif -%}
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
             {%- when 'vendor' -%}
             {% comment %}
@@ -180,6 +185,7 @@
             <div class="product-detail__vendor" {{ block.shopify_attributes }}>
               {{ 'products.product.vendor_html' | t: vendor: vendor_link }}
             </div>
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
             {%- when 'type' -%}
             {%- if product.type != blank -%}
@@ -189,6 +195,7 @@
             {%- else -%}
             {%- assign type_url = product.type | url_for_type -%}
             {%- endif -%}
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
             <div class="product-detail__type type-wrapper" {{ block.shopify_attributes }}>
               {{ 'products.product.type' | t }}
@@ -214,9 +221,11 @@
               {%- endif -%}
               {% endfor %}
               {% render 'variant-picker', section: section, product: product, block: block, show_size_chart: show_size_chart, size_chart_page: size_chart_page %}
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
             </div>
             {%- endunless -%}
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
             {%- when 'buy_buttons' -%}
             {%- form 'product', product, id: product_form_id, class: form_class -%}
@@ -265,6 +274,7 @@
               </option>
               {%- endfor -%}
             </select>
+<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
             <div class="large-row{% if block.settings.enable_payment_button and product.selling_plan_groups == empty %} with-payment-buttons{% endif %}" {{ block.shopify_attributes }}>
 
