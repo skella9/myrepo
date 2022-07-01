@@ -17,7 +17,6 @@
       endfor
     endif
   -%}
-<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
   <div class="container container--no-mobile-padding" data-section-id="{{ section.id }}" data-section-type="collection-template" data-components="facet-filters,price-range">
     {%- if show_feature_header -%}
@@ -35,7 +34,6 @@
         {% endfor %}
       {% endstyle %}
     {%- endif -%}
-<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
     {%- assign header_image = collection.featured_image -%}
     <div class="page-width collection-header global-border-radius {% if show_feature_header %}standout-collection-bg {% if header_image != blank or featured_product != blank %} collection-header--split{% endif %}{% endif %} {% if featured_product != blank %}collection-header--with-product{% endif %}">
@@ -106,7 +104,6 @@
         {%- endif -%}
 
       {%- else -%}
-<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
         <div class="reading-width large-row center">
           <h1 class="large-title row">{{ collection.title }}</h1>
@@ -145,7 +142,6 @@
           endif
         -%}
         {% capture grid_class_list %}{{ grid_class }} small-down--{{ grid_mobile_class }} grid-flex__item {% endcapture %}
-<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
         <div class="grid-flex large-row">
           {%- for product in collection.products -%}
@@ -170,7 +166,6 @@
             {%- endif -%}
           {%- endfor -%}
         </div>
-<!-- All code has been authored and written by Raquel Roman rockiey2kai@gmail.com copyright only owned by Raquel Roman this code has not yet been paid for-->
 
         {%- if paginate.pages > 1 -%}
           {% render 'pagination', paginate: paginate %}
